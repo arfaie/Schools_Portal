@@ -29,4 +29,34 @@
     <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Shared\Components\MainAboutUs\Default.cshtml" />
+    <None Include="Views\Shared\Components\MainContactUs\Default.cshtml" />
+    <None Include="Views\Shared\Components\MainGallery\Default.cshtml" />
+    <None Include="Views\Shared\Components\MainService\Default.cshtml" />
+    <None Include="Views\Shared\Components\MainSlider\Default.cshtml" />
+    <None Include="wwwroot\wp-content\plugins\contact-form-7\includes\js\scripts.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\bootstrap.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.appear.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.counterup.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.magnific.popup.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.matchHeight.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.nav.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.scrollUp.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\jquery.slicknav.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\main.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\modernizr.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\owl.carousel.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\typed.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\waypoints.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\wow.js" />
+    <None Include="wwwroot\wp-content\themes\business-portfolio\assets\js\ytplayer.js" />
+    <None Include="wwwroot\wp-includes\js\comment-reply.min.js" />
+    <None Include="wwwroot\wp-includes\js\jquery\jquery-migrate.min.js" />
+    <None Include="wwwroot\wp-includes\js\jquery\jquery.js" />
+    <None Include="wwwroot\wp-includes\js\wp-embed.min.js" />
+  </ItemGroup>
+
 </Project>

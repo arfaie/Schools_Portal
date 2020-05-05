@@ -1,0 +1,59 @@
+﻿@model Services
+
+<section id="services" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 fadeIn">
+                <div class="section-title center">
+                    <h2>@Model.Title</h2>
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                <!-- Single Service -->
+                <div class="single-service active">
+                    <i class="fa fa-check"></i>
+                    <h2>@Model.Service1</h2>
+                    <p>@Model.Service1Des</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                <!-- Single Service -->
+                <div class="single-service active">
+                    <i class="fa fa-edit"></i>
+                    <h2>@Model.Service2</h2>
+                    <p>@Model.Service2Des</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                <!-- Single Service -->
+                <div class="single-service active">
+                    <i class="fa fa-send"></i>
+                    <h2>@Model.Service3</h2>
+                    <p>@Model.Service3Des</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                <!-- Single Service -->
+                <div class="single-service active">
+                    <i class="fa fa-code"></i>
+                    <h2>@Model.Service4</h2>
+                    <p>@Model.Service4Des</p>
+                </div>
+                <!-- End Single Service -->
+            </div>
+
+        </div>
+    </div>
+</section>

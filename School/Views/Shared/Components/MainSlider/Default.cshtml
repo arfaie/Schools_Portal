@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Slider>
+
+
+@{
+    foreach (var item in Model)
+    {
+        <div class="single-slider" style="background-color: #008080; background: url('@ViewBag.RootPath@item.Image')">
+            <div class="container">
+                <div class="row">
+
+                    <div class="">
+                        <!-- Slider Text -->
+                        <div class="slide-text ">
+                            <div class="slider-inner">
+                                <h1>@item.Title</h1>
+                                <p>
+                                    @item.Description
+                                </p>
+                                @if (item.Id == "1")
+                                {
+                                    <p style=" align-items: center; justify-content: center; text-align: center">
+                                        <a class="header-button">ثبت نام غیر حضوری</a>
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                        <!--/ End Slider Text -->
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    }
+}

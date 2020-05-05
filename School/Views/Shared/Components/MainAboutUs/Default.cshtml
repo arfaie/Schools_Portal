@@ -1,0 +1,52 @@
+﻿@model AboutUs
+
+<div class="why-image">
+    <div class="static-image wow fadeIn" style="background: url('@ViewBag.RootPath@Model.Image') center center / cover no-repeat scroll; visibility: visible; animation-name: fadeIn;height: 100%"></div>
+    @* <img class="static-image wow fadeIn" src="~/images/home-uploads/3.jpg" style="visibility: visible; animation-name: fadeIn; height: 100%; width: 100%;" /> *@
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-xs-12 pull-right">
+
+            <h2>درباره ما؟</h2>
+            <p>
+                @Model.Des
+            </p>
+            <div class="row">
+                <!-- Single Choose -->
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="single-choose">
+                        <i class="fa fa-check"></i>
+                        <h4>@Model.Title1</h4>
+                    </div>
+                </div>
+                <!-- End Single Choose -->
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="single-choose">
+                        <i class="fa fa-check"></i>
+                        <h4>@Model.Title2</h4>
+                    </div>
+                </div>
+                <!-- End Single Choose -->
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="single-choose">
+                        <i class="fa fa-check"></i>
+                        <h4>@Model.Title3</h4>
+                    </div>
+                </div>
+                <!-- End Single Choose -->
+                <div class="col-md-6 col-sm-6 col-xs-12 wow fadeIn" data-wow-delay="0.4s">
+                    <div class="single-choose">
+                        <i class="fa fa-check"></i>
+                        <h4>@Model.Title4</h4>
+                    </div>
+                </div>
+                <!-- End Single Choose -->
+            </div>
+
+
+        </div>
+    </div>
+</div>

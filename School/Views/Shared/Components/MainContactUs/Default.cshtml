@@ -1,0 +1,22 @@
+﻿@model IEnumerable<ContactUs>
+
+<section id="contact" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn">
+                <div class="section-title center">
+                    <h2>تماس با ما</h2>
+                    @foreach (var item in Model)
+                    {
+                        <p>@item.Description</p>
+                    }
+                    <br>
+                    <p>آدرس تلگرام: farda_school</p>
+                    <p>آدرس اینستاگرام: farad_school1</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>

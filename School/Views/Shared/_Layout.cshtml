@@ -1,45 +1,69 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - School</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - SchoolsPortal</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">School</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-xs-12">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="index.htm" class="custom-logo-link" rel="home" itemprop="url"><img width="40" height="40" src="~/images/home-uploads/Logo.png" class="custom-logo" alt="Logo" itemprop="logo"></a>
+                    </div>
+                    <!--/ End Logo -->
+                </div>
+                <div class="col-md-10 col-sm-12 col-xs-12">
+                    <div class="nav-area">
+                        <!-- Main Menu -->
+                        <nav class="mainmenu">
+                            <div class="mobile-nav"></div>
+                            <div class="collapse navbar-collapse">
+                                <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+                                    <ul id="menu-%d8%a7%d8%b5%d9%84%db%8c-%d8%aa%da%a9-%d8%b5%d9%81%d8%ad%d9%87" class="nav navbar-nav ml-auto">
+                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-42 current_page_item menu-item-676 active"><a title="خانه" href="#j-slider">خانه</a></li>
+                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-677" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-677"><a title="درباره‌ ما" href="#services">خدمات ما</a></li>
+                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-679"><a title="درباره ما" href="#why-choose">درباره ما</a></li>
+                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-682"><a title="نمونه‌ کارهای ما" href="#portfolio">گالری تصاویر</a></li>
+                                        <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="تماس با ما" href="#contact">تماس با ما</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!--/ End Main Menu -->
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main>
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - School - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer id="footer" class="wow fadeIn">
+        <!-- Footer Top -->
+        <!--/ End Footer Top -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="text">
+                            <p>اجرا شده توسط: <a href="http://punas.ir" target="_blank">پوناس</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!--/ End Copyright -->
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
