@@ -19,8 +19,6 @@ namespace School.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ViewBag.RootPath = "images/home-uploads/";
-
             return View(await _context.Galleries.AsNoTracking().ToListAsync());
         }
     }

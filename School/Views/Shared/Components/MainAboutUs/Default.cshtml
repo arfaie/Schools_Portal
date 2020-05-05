@@ -1,7 +1,8 @@
-﻿@model AboutUs
+﻿@using School.Helpers
+@model AboutUs
 
 <div class="why-image">
-    <div class="static-image wow fadeIn" style="background: url('@ViewBag.RootPath@Model.Image') center center / cover no-repeat scroll; visibility: visible; animation-name: fadeIn;height: 100%"></div>
+    <div class="static-image wow fadeIn" style="background: url('@Helper.NormalImagePath@Model.Image') center center / cover no-repeat scroll; visibility: visible; animation-name: fadeIn;height: 100%"></div>
     @* <img class="static-image wow fadeIn" src="~/images/home-uploads/3.jpg" style="visibility: visible; animation-name: fadeIn; height: 100%; width: 100%;" /> *@
 
 </div>
