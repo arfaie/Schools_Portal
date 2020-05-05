@@ -107,6 +107,47 @@
 @await Html.PartialAsync("_Modal", new BootstrapModel { Id = "modal-action", Size = ModalSize.Medium })
 
 @section Scripts{
+    
+    <script>
+        $(document).on('click', '#submitdata', function (evt) {
+            evt.preventDefault();
+            var fileupload = $("#files").get(0);
+            var files = fileupload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append('files', files[i])
+
+            }
+            $('input,select').each(function (x, y) {
+                data.append($(y).attr('name'), $(y).val());
+
+            });
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("AddEdit", "AboutUs", new { Area = "Admin" })',
+                contentType: false,
+                processData: false,
+                data: data
+
+            }).done(function (res) {
+                if (res.status === "success") {
+                    window.location.href = '@Url.Action("Index", "AboutUs")';
+                }
+                else {
+                    $.each(res.error, function (a, b) {
+                        alert(b);
+
+                    });
+
+                }
+            }).fail(function (xhr, b, error) {
+
+                alert(error)
+            });
+
+        });
+
+    </script>
 
 }
 
