@@ -14,9 +14,6 @@ namespace School.Models
 		[Display(Name = "کد ملی")]
 		public long NationalCode { get; set; }
 
-		[Display(Name = "کد تاکسی")]
-		public string TaxiCode { get; set; }
-
 		[Display(Name = "زمان ثبت نام")]
 		public DateTime RegistrationDateAndTime { get; set; }
 
