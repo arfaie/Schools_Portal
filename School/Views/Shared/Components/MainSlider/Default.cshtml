@@ -3,8 +3,10 @@
 
 
 @{
+    int Count = 1;
     foreach (var item in Model)
     {
+       
         <div class="single-slider" style="background-color: #008080; background: url('@Helper.NormalImagePath@item.Image')">
             <div class="container">
                 <div class="row">
@@ -17,11 +19,12 @@
                                 <p>
                                     @item.Description
                                 </p>
-                                @if (item.Id == "1")
+                                @if (Count == 1)
                                 {
                                     <p style=" align-items: center; justify-content: center; text-align: center">
                                         <a class="header-button">ثبت نام غیر حضوری</a>
                                     </p>
+                                    Count++;
                                 }
                             </div>
                         </div>
