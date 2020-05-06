@@ -14,9 +14,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-12 col-xs-12">
                     <!-- Logo -->
-                    <div class="logo">
-                        <a href="index.htm" class="custom-logo-link" rel="home" itemprop="url"><img width="40" height="40" src="~/images/home-uploads/Logo.png" class="custom-logo" alt="Logo" itemprop="logo"></a>
-                    </div>
+                    @await Component.InvokeAsync("MainSettingLogo")
                     <!--/ End Logo -->
                 </div>
                 <div class="col-md-10 col-sm-12 col-xs-12">

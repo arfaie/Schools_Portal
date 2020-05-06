@@ -1,0 +1,106 @@
+﻿@model School.Models.Setting
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, School
+
+<form method="post" enctype="multipart/form-data">
+
+    @*header*@
+    @if (!String.IsNullOrWhiteSpace(Model.Id))
+    {
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش تنظیمات" })
+    }
+    else
+    {
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش تنظیمات" })
+    }
+
+
+    @*body*@
+    <div class="modal-body form-horizontal">
+
+        <div class="row">
+            <div class="form-group">
+                <label asp-for="GalleryDes" class="col-lg-2 col-sm-2 control-label"></label>
+                <div class="col-lg-6">
+                    <input asp-for="GalleryDes" class="form-control" />
+                    <span asp-validation-for="GalleryDes" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Logo" class="col-lg-2 col-sm-2 control-label"></label>
+                <div class="col-lg-6">
+                    <input required="required" type="file" id="files" name="files" multiple />
+                </div>
+                @if (!String.IsNullOrWhiteSpace(Model.Id))
+                {
+                    <input type="hidden" name="Imgename" value="@Model.Logo" />
+                }
+            </div>
+
+            <input type="hidden" asp-for="Id" class="form-control" />
+
+            <input type="hidden" name="redirectUrl" value="@Url.Action("index","AboutUs")" />
+
+        </div>
+    </div>
+
+    @*footer*@
+    @if (!String.IsNullOrWhiteSpace(Model.Id))
+    {
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" data-dismiss="modal" value="برگشت">برگشت</button>
+            <input type="submit" id="submitdata" class="btn btn-success" value="ویرایش" />
+        </div>
+
+    }
+    else
+    {
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" data-dismiss="modal" value="برگشت">برگشت</button>
+            <input type="submit" id="submitdata" class="btn btn-success" value="افزودن" />
+        </div>
+
+    }
+
+
+</form>
+
+<script>
+    $(document).on('click', '#submitdata', function (evt) {
+        evt.preventDefault();
+        var fileupload = $("#files").get(0);
+        var files = fileupload.files;
+        var data = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            data.append('files', files[i]);
+
+        }
+        $('input').each(function (x, y) {
+            data.append($(y).attr('name'), $(y), val());
+
+        });
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddEdit", "Setting", new { Areas = "Admin" })',
+            contentType: false,
+            processData: false,
+            data: data
+
+        }).done(function (res) {
+            if (res.status === "success") {
+                alert(res.message);
+            }
+            else {
+                alert("در ثبت اطلاعات مشکلی وجود دارد");
+
+            }
+        }).fail(function (xhr, b, error) {
+
+            alert(error);
+        });
+
+    });
+
+</script>
