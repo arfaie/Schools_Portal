@@ -12,6 +12,7 @@ using School.Helpers;
 using School.Models;
 using School.Models.Helpers;
 using School.Models.Helpers.OptionEnums;
+using School.ViewModels;
 
 namespace School.Areas.Admin.Controllers
 {
@@ -184,6 +185,46 @@ namespace School.Areas.Admin.Controllers
             ViewBag.ApplicationRoles = new SelectList(await _roleManager.Roles.ToListAsync(), "Id", "Name", model.ApplicationRoleId);
 
             return PartialView("Edit", model);
+        }
+
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        public IActionResult ChangePassword(string id)
+        {
+            return PartialView("ChangePassword", new AdminChangePasswordViewModel { Id = id });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(string id, AdminChangePasswordViewModel model, string redirectUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(id);
+                if (user == null)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                var result = await _userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+
+                    TempData["Notification"] = Notification.ShowNotif("خطایی رخ داد.", ToastType.Red);
+                    return PartialView("ChangePassword", model);
+                }
+
+                //await _signInManager.RefreshSignInAsync(user);
+                TempData["Notification"] = Notification.ShowNotif("رمز عبور شما با موفقیت ویرایش شد.", ToastType.Green);
+                return PartialView("_SuccessfulResponse", redirectUrl);
+            }
+
+            return PartialView("ChangePassword", model);
         }
     }
 }

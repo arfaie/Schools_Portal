@@ -69,6 +69,12 @@
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                                 ویرایش
                                             </a>
+                                            
+                                            <a class="btn btn-primary" id="showedituser" data-toggle="modal" asp-action="ChangePassword"
+                                               data-target="#modal-action" asp-route-Id="@item.Id">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                ویرایش پسورد
+                                            </a>
 
                                             <a class="btn btn-danger" id="showcity" data-toggle="modal" asp-action="Delete"
                                                data-target="#modal-action" asp-route-Id="@item.Id">
