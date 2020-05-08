@@ -1,0 +1,36 @@
+﻿@model LoginViewModel
+
+@{
+    ViewData["Title"] = "لاگین";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="login-body">
+    <a class="login-brand" href="index.html">
+        <img class="img-responsive" src="~/img/LogoAsli.jpg" alt="Elephant" />
+    </a>
+    <h3 class="login-heading">ورود</h3>
+    <div class="login-form">
+        <form data-toggle="md-validator" class="form-horizontal" asp-controller="Account" asp-action="Login" method="post">
+            <div class="md-form-group md-label-floating">
+                <input asp-for="userName" class="md-form-control" type="Username" name="Username" spellcheck="false" autocomplete="off" data-msg-required="Please enter your Username." required>
+                <label class="md-control-label">Username</label>
+            </div>
+            <div class="md-form-group md-label-floating">
+                <input asp-for="Password" class="md-form-control" type="password" name="password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required>
+                <label class="md-control-label">Password</label>
+            </div>
+            <div class="md-form-group md-custom-controls">
+                @*<label class="custom-control custom-control-primary custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" checked="checked">
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-label">Keep me signed in</span>
+                            </label>*@
+                <span aria-hidden="true"> · </span>
+                <a href="#">رمز عبور را فراموش کرده اید؟</a>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">ورود</button>
+        </form>
+    </div>
+</div>
+

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ using School.Models.Helpers.OptionEnums;
 namespace School.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SettingController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -33,7 +35,7 @@ namespace School.Areas.Admin.Controllers
         public IActionResult Index()
         {
             ViewBag.Path = "/upload/thumbnailimage/";
-            return View( _context.Settings.FirstOrDefault());
+            return View(_context.Settings.FirstOrDefault());
         }
 
         [HttpGet]
