@@ -1,0 +1,121 @@
+﻿@model Services
+
+<form asp-controller="Services" asp-action="AddEdit" id="AddEdit" data-ajax="true" data-ajax-method="post"
+      data-ajax-update="#AddEdit" data-ajax-mode="replace">
+
+    @*header*@
+    @if (!String.IsNullOrWhiteSpace(Model.Id))
+    {
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش سرویس" })
+    }
+    else
+    {
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "افزودن سرویس" })
+    }
+
+    @*body*@
+    <div class="modal-body form-horizontal">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Title" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Description" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service1" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service1" class="form-control" />
+                        <span asp-validation-for="Service1" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service2" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service2" class="form-control" />
+                        <span asp-validation-for="Service2" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service3" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service3" class="form-control" />
+                        <span asp-validation-for="Service3" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label asp-for="Service4" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service4" class="form-control" />
+                        <span asp-validation-for="Service4" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service1Des" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service1Des" class="form-control" />
+                        <span asp-validation-for="Service1Des" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service2Des" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service2Des" class="form-control" />
+                        <span asp-validation-for="Service2Des" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service3Des" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service3Des" class="form-control" />
+                        <span asp-validation-for="Service3Des" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Service4Des" class="col-lg-2 col-sm-2 control-label"></label>
+                    <div class="col-lg-6">
+                        <input asp-for="Service4Des" class="form-control" />
+                        <span asp-validation-for="Service4Des" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <input type="hidden" asp-for="Id" class="form-control" />
+
+            <input type="hidden" name="redirectUrl" value="@Url.Action("index", "Services")" />
+
+        </div>
+    </div>
+
+    @*footer*@
+    @if (!String.IsNullOrWhiteSpace(Model.Id))
+    {
+        @await Html.PartialAsync("_ModalFooter", new ModalFooter { SubmitButtonText = "ویرایش " })
+    }
+    else
+    {
+        @await Html.PartialAsync("_ModalFooter", new ModalFooter { SubmitButtonText = "افزودن " })
+    }
+
+</form>

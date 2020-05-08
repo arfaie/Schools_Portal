@@ -1,7 +1,7 @@
-﻿@model IEnumerable<AboutUs>
+﻿@model IEnumerable<Slider>
 
 @{
-    ViewData["Title"] = "درباره ما";
+    ViewBag.Title = "اسلاید ها";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -34,23 +34,22 @@
                     </div>
                     <div class="md-form-group md-label-floating col-md-6">
                         <div class="margin-top">
-                                <div class="col-xs-6 col-md-6">
-                                    <a class="btn btn-primary marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
-                                       data-target="#modal-action">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                        افزودن درباره جدید
-                                    </a>
-                                </div>
+                            <div class="col-xs-6 col-md-6">
+                                <a class="btn btn-primary marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
+                                   data-target="#modal-action">
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                    افزودن اسلاید جدید
+                                </a>
                             </div>
+                        </div>
                     </div>
                     <table id="example" class="table table-striped table-nowrap dataTable" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>کد</th>
-                                <th>@Html.DisplayNameFor(model => model.Title1)</th>
-                                <th>@Html.DisplayNameFor(model => model.Title2)</th>
-                                <th>@Html.DisplayNameFor(model => model.Title3)</th>
-                                <th>@Html.DisplayNameFor(model => model.Title4)</th>
+                                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                                <th>@Html.DisplayNameFor(model => model.Image)</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
@@ -61,10 +60,11 @@
                                 {
                                     <tr>
                                         <td>1</td>
-                                        <td>@item.Title1</td>
-                                        <td>@item.Title2</td>
-                                        <td>@item.Title3</td>
-                                        <td>@item.Title4</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.Description</td>
+                                        <td style="width: 10px; text-align: center;">
+                                            <img src="@Helper.ThumbnailImagePath@item.Image" style=" width:80px; height:80px" class="thumbnail text-center" />
+                                        </td>
 
 
                                         <td>
@@ -74,11 +74,17 @@
                                                 ویرایش
                                             </a>
 
+                                            <a class="btn btn-info" id="editagency" data-toggle="modal" asp-action="Delete"
+                                               data-target="#modal-action" asp-route-id="@item.Id">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                حذف
+                                            </a>
+
 
                                         </td>
                                     </tr>
                                 }
-                                
+
 
                             }
 
@@ -104,7 +110,7 @@
 @await Html.PartialAsync("_Modal", new BootstrapModel { Id = "modal-action", Size = ModalSize.Medium })
 
 @section Scripts{
-    
+
     <script>
         $(document).on('click', '#submitdata', function (evt) {
             evt.preventDefault();
@@ -115,20 +121,20 @@
                 data.append('files', files[i])
 
             }
-            $('input,select').each(function (x, y) {
+            $('input,textarea').each(function (x, y) {
                 data.append($(y).attr('name'), $(y).val());
 
             });
             $.ajax({
                 type: "post",
-                url: '@Url.Action("AddEdit", "AboutUs", new { Area = "Admin" })',
+                url: '@Url.Action("AddEdit", "Slider", new { Area = "Admin" })',
                 contentType: false,
                 processData: false,
                 data: data
 
             }).done(function (res) {
                 if (res.status === "success") {
-                    window.location.href = '@Url.Action("Index", "AboutUs")';
+                    window.location.href = '@Url.Action("Index", "Slider")';
                 }
                 else {
                     $.each(res.error, function (a, b) {
@@ -147,4 +153,5 @@
     </script>
 
 }
+
 

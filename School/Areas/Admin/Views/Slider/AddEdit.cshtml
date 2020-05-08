@@ -1,15 +1,15 @@
-﻿@model School.Models.AboutUs
+﻿@model School.Models.Slider
 
 <form method="post" enctype="multipart/form-data">
 
     @*header*@
     @if (!String.IsNullOrWhiteSpace(Model.Id))
     {
-        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش درباره ما" })
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش اسلاید" })
     }
     else
     {
-        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "ویرایش درباره ما" })
+        @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "افزودن اسلاید" })
     }
 
 
@@ -18,42 +18,18 @@
 
         <div class="row">
             <div class="form-group">
-                <label asp-for="Title1" class="col-lg-2 col-sm-2 control-label"></label>
+                <label asp-for="Title" class="col-lg-2 col-sm-2 control-label"></label>
                 <div class="col-lg-6">
-                    <input asp-for="Title1" class="form-control" />
-                    <span asp-validation-for="Title1" class="text-danger"></span>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label asp-for="Title2" class="col-lg-2 col-sm-2 control-label"></label>
+                <label asp-for="Description" class="col-lg-2 col-sm-2 control-label"></label>
                 <div class="col-lg-6">
-                    <input asp-for="Title2" class="form-control" />
-                    <span asp-validation-for="Title2" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Title3" class="col-lg-2 col-sm-2 control-label"></label>
-                <div class="col-lg-6">
-                    <input asp-for="Title3" class="form-control" />
-                    <span asp-validation-for="Title3" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Title4" class="col-lg-2 col-sm-2 control-label"></label>
-                <div class="col-lg-6">
-                    <input asp-for="Title4" class="form-control" />
-                    <span asp-validation-for="Title4" class="text-danger"></span>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="Des" class="col-lg-2 col-sm-2 control-label"></label>
-                <div class="col-lg-6">
-                    <textarea asp-for="Des" class="form-control"></textarea>
-                    <span asp-validation-for="Des" class="text-danger"></span>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
             </div>
 
@@ -70,7 +46,7 @@
 
             <input type="hidden" asp-for="Id" class="form-control" />
 
-            <input type="hidden" name="redirectUrl" value="@Url.Action("index","AboutUs")" />
+            <input type="hidden" name="redirectUrl" value="@Url.Action("index","Slider")" />
 
         </div>
     </div>
@@ -80,7 +56,7 @@
     {
         <div class="modal-footer">
             <button class="btn btn-default" type="button" data-dismiss="modal" value="برگشت">برگشت</button>
-            <input type="submit" id="submitdata" class="btn btn-success" value="ویرایش درباره ما" />
+            <input type="submit" id="submitdata" class="btn btn-success" value="ویرایش " />
         </div>
 
     }
@@ -88,7 +64,7 @@
     {
         <div class="modal-footer">
             <button class="btn btn-default" type="button" data-dismiss="modal" value="برگشت">برگشت</button>
-            <input type="submit" id="submitdata" class="btn btn-success" value="افزودن درباره ما" />
+            <input type="submit" id="submitdata" class="btn btn-success" value="افزودن" />
         </div>
 
     }
@@ -106,13 +82,13 @@
             data.append('files', files[i]);
 
         }
-        $('input').each(function (x, y) {
+        $('input,textarea').each(function (x, y) {
             data.append($(y).attr('name'), $(y), val());
 
         });
         $.ajax({
             type: "POST",
-            url: '@Url.Action("AddEdit", "AboutUs", new { Areas = "Admin" })',
+            url: '@Url.Action("AddEdit", "Slider", new { Areas = "Admin" })',
             contentType: false,
             processData: false,
             data: data

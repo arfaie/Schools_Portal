@@ -1,14 +1,14 @@
 ﻿@model string
 
-<form asp-controller="AboutUs" asp-action="Delete">
+<form asp-controller="Slider" asp-action="Delete">
 
-    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "حذف " })
+    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = "حذف اسلاید" })
 
     <div class="modal-body form-horizontal">
         آیا از حذف  @Model مطمئن هستید؟
     </div>
 
-    <input type="hidden" name="redirectUrl" value="@Url.Action("Index","AboutUs")" />
+    <input type="hidden" name="redirectUrl" value="@Url.Action("Index","Slider")" />
 
     @await Html.PartialAsync("_ModalFooter", new ModalFooter { SubmitButtonText = "حذف" })
 
