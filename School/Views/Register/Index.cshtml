@@ -114,7 +114,7 @@
 
 <body class="rtl post-template-default single single-post postid-9 single-format-standard wp-custom-logo">
     <!-- Start Header -->
-<!--/ End Header -->
+    <!--/ End Header -->
     <!-- Start Breadcrumbs -->
     <!-- Start Blog -->
     <section id="blog" class="single section page">
@@ -156,24 +156,49 @@
                                 </div>
 
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">نام پدر</label>
+                                    <label class="control-label">معدل سال قبل</label>
                                     <input class="form-control">
                                 </div>
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">شغل پدر</label>
+                                    <label class="control-label">نام پدر</label>
                                     <input class="form-control">
                                 </div>
 
                                 <div class="mt-2 col-md-4">
                                     <label class="control-label">تحصیلات پدر</label>
+                                    <select class="form-control">
+                                        <option selected="selected" disabled="disabled">انتخاب تحصیلات پدر</option>
+                                    </select>
+                                    @*<input class="form-control">*@
+                                </div>
+
+                                <div class="mt-2 col-md-4">
+                                    <label class="control-label">شغل پدر</label>
+                                    <input class="form-control">
+                                </div>
+
+                                <!-----------hr------------->
+                                <div class="hr  col-md-12"></div>
+                                <!-----------hr------------->
+
+                                <div class="mt-2 col-md-4">
+                                    <label class="control-label">شغل مادر</label>
                                     <input class="form-control">
                                 </div>
 
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">شغل مادر</label>
+                                    <label class="control-label">تحصیلات مادر</label>
+                                    <select class="form-control">
+                                        <option selected="selected" disabled="disabled">انتخاب تحصیلات مادر</option>
+                                    </select>
+                                    @*<input class="form-control">*@
+                                </div>
+
+                                <div class="mt-2 col-md-4">
+                                    <label class="control-label">تلفن منزل</label>
                                     <input class="form-control">
                                 </div>
 
@@ -250,7 +275,7 @@
 
                                 <div class="mt-2 col-md-12">
                                     <label class="control-label">شماره تماس پدر</label>
-                                    <input class="form-control">
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <!-----------hr------------->
@@ -258,11 +283,11 @@
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
                                     <label class="control-label">شماره تماس مادر</label>
-                                    <input class="form-control">
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <div class="mt-6 col-md-12">
-                                    <input type="button" class="btn btn-success btn-block" value="ثبت">
+                                    <input type="submit" class="btn btn-success btn-block" value="ثبت">
                                 </div>
                             </div>
                         </div>
@@ -273,36 +298,35 @@
     </section>
     <!-- End Blog section -->
     <!-- Start Footer -->
-
     <!--/ End Footer -->
     <script type='text/javascript'>
-    /* <![CDATA[ */
-    var wpcf7 = {
-        "apiSettings": {
-            "root": "https:\/\/demo.hamyarwp.com\/business-portfolio\/index.php?rest_route=\/contact-form-7\/v1",
-            "namespace": "contact-form-7\/v1"
-        },
-        "recaptcha": {"messages": {"empty": "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f."}}
-    };
-    /* ]]> */
+        /* <![CDATA[ */
+        var wpcf7 = {
+            "apiSettings": {
+                "root": "https:\/\/demo.hamyarwp.com\/business-portfolio\/index.php?rest_route=\/contact-form-7\/v1",
+                "namespace": "contact-form-7\/v1"
+            },
+            "recaptcha": { "messages": { "empty": "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f." } }
+        };
+                /* ]]> */
     </script>
-<script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/bootstrap.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.appear.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.counterup.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.magnific.popup.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.nav.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.scrollUp.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.slicknav.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/modernizr.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/owl.carousel.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/typed.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/waypoints.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/wow.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/ytplayer.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.matchHeight.js'></script>
-<script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/main.js'></script>
-<script type='text/javascript' src='~/wp-includes/js/wp-embed.min.js'></script>
+    <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/bootstrap.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.appear.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.counterup.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.magnific.popup.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.nav.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.scrollUp.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.slicknav.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/modernizr.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/owl.carousel.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/typed.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/waypoints.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/wow.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/ytplayer.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/jquery.matchHeight.js'></script>
+    <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/main.js'></script>
+    <script type='text/javascript' src='~/wp-includes/js/wp-embed.min.js'></script>
 
 </body>
 </html>
