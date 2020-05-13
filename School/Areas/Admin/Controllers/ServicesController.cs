@@ -39,12 +39,12 @@ namespace School.Areas.Admin.Controllers
                 return PartialView("AddEdit", Services);
             }
 
-            return PartialView("AddEdit", new Services());
+            return PartialView("AddEdit", new Models.Services());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddEdit(string id, Services model, string redirectUrl)
+        public async Task<IActionResult> AddEdit(string id, Models.Services model, string redirectUrl)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,6 @@ namespace School.Areas.Admin.Controllers
             {
                 var model = await _context.Serviceses.SingleOrDefaultAsync(b => b.Id == id);
 
-                _context.Remove(model);
                 _context.Remove(model);
                 await _context.SaveChangesAsync();
 

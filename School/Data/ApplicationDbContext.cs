@@ -18,7 +18,7 @@ namespace School.Data
         public DbSet<AboutUs> AboutUses { get; set; }
         public DbSet<ContactUs> ContactUses { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
-        public DbSet<Services> Serviceses { get; set; }
+        public DbSet<Models.Services> Serviceses { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Student> Students { get; set; }
@@ -43,7 +43,7 @@ namespace School.Data
             builder.Entity<AboutUs>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<ContactUs>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<Gallery>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
-            builder.Entity<Services>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
+            builder.Entity<Models.Services>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<Setting>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<Slider>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<Student>().Property(x => x.Id).HasDefaultValueSql("NEWID()");

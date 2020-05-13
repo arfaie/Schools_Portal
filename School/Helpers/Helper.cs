@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using School.ViewModels;
 
 namespace School.Helpers
 {
@@ -17,37 +18,37 @@ namespace School.Helpers
 		public static string ThumbnailImagePath { get; set; } = "/upload/thumbnailimage/";
 		public static string NormalImagePath { get; set; } = "/upload/normalimage/";
 
-		//private static readonly List<ConfirmationCodeViewModel> ConfirmationCodes = new List<ConfirmationCodeViewModel>();
+        private static readonly List<ConfirmationCodeViewModel> ConfirmationCodes = new List<ConfirmationCodeViewModel>();
 
-		//public static int GenerateShortenCode(string mobile, string link)
-		//{
-		//	var number = new Random().Next(10001, 99999);
+        public static int GenerateShortenCode(string mobile, string link)
+        {
+            var number = new Random().Next(10001, 99999);
 
-		//	ConfirmationCodes.Add(new ConfirmationCodeViewModel { Mobile = mobile, Link = link, ShortenCode = number.ToString() });
+            ConfirmationCodes.Add(new ConfirmationCodeViewModel { Mobile = mobile, Link = link, ShortenCode = number.ToString() });
 
-		//	return number;
-		//}
+            return number;
+        }
 
-		//public static string GetLink(string mobile, string shortCode, bool shouldRemoveCode = true)
-		//{
-		//	var link = String.Empty;
+        public static string GetLink(string mobile, string shortCode, bool shouldRemoveCode = true)
+        {
+            var link = String.Empty;
 
-		//	var code = ConfirmationCodes.FirstOrDefault(x => x.Mobile == mobile && x.ShortenCode == shortCode);
+            var code = ConfirmationCodes.FirstOrDefault(x => x.Mobile == mobile && x.ShortenCode == shortCode);
 
-		//	if (code != null)
-		//	{
-		//		link = code.Link;
+            if (code != null)
+            {
+                link = code.Link;
 
-		//		if (shouldRemoveCode)
-		//		{
-		//			ConfirmationCodes.Remove(code);
-		//		}
-		//	}
+                if (shouldRemoveCode)
+                {
+                    ConfirmationCodes.Remove(code);
+                }
+            }
 
-		//	return link;
-		//}
+            return link;
+        }
 
-		public static string GetPersianDateText(DateTime dateTime)
+        public static string GetPersianDateText(DateTime dateTime)
 		{
 			try
 			{

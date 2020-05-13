@@ -1,36 +1,123 @@
-﻿@model LoginViewModel
+﻿@*@model LoginViewModel
+
+    @{
+        ViewData["Title"] = "لاگین";
+        Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    }
+
+    <div class="login-body">
+        <a class="login-brand" href="index.html">
+            <img class="img-responsive" src="~/img/LogoAsli.jpg" alt="Elephant" />
+        </a>
+        <h3 class="login-heading">ورود</h3>
+        <div class="login-form">
+            <form data-toggle="md-validator" class="form-horizontal" asp-controller="Account" asp-action="Login" method="post">
+                <div class="md-form-group md-label-floating">
+                    <input asp-for="userName" class="md-form-control" type="Username" name="Username" spellcheck="false" autocomplete="off" data-msg-required="Please enter your Username." required>
+                    <label class="md-control-label">Username</label>
+                </div>
+                <div class="md-form-group md-label-floating">
+                    <input asp-for="Password" class="md-form-control" type="password" name="password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required>
+                    <label class="md-control-label">Password</label>
+                </div>
+                <div class="md-form-group md-custom-controls">
+                    <label class="custom-control custom-control-primary custom-checkbox">
+                                    <input class="custom-control-input" type="checkbox" checked="checked">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-label">Keep me signed in</span>
+                                </label>
+                    <span aria-hidden="true"> · </span>
+                    <a href="#">رمز عبور را فراموش کرده اید؟</a>
+                </div>
+                <button class="btn btn-primary btn-block" type="submit">ورود</button>
+            </form>
+        </div>
+    </div>*@
+
+
+@model LoginViewModel
 
 @{
-    ViewData["Title"] = "لاگین";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    ViewBag.Title = "ورود به سایت";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
-<div class="login-body">
-    <a class="login-brand" href="index.html">
-        <img class="img-responsive" src="~/img/LogoAsli.jpg" alt="Elephant" />
-    </a>
-    <h3 class="login-heading">ورود</h3>
-    <div class="login-form">
-        <form data-toggle="md-validator" class="form-horizontal" asp-controller="Account" asp-action="Login" method="post">
-            <div class="md-form-group md-label-floating">
-                <input asp-for="userName" class="md-form-control" type="Username" name="Username" spellcheck="false" autocomplete="off" data-msg-required="Please enter your Username." required>
-                <label class="md-control-label">Username</label>
+<div class="col-lg-4 col-md-6 col-xs-12 mx-auto">
+    <div class="account-box">
+        <span class="account-head-line">@ViewBag.Title</span>
+        <form asp-controller="Account" asp-action="Login">
+            <div class="content-account">
+                <label asp-for="userName"></label>
+                <input asp-for="userName" class="input-email-account" placeholder="شماره موبایل خود را وارد نمایید" /><i class="mdi mdi-account-outline" style="top: 55px;"></i>
+
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="input-password" placeholder="رمز عبور خود را وارد نمایید" /><i class="mdi mdi-lock" style="top: 146px;"></i>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="parent-btn">
+                    <button type="submit" class="dk-btn dk-btn-info" style="margin-top: 40px;">
+                        ورود به سایت
+                        <i class="fa fa-sign-in sign-in"></i>
+                    </button>
+                </div>
+
+                <a asp-action="ForgotPassword" class="account-link-password">رمز عبور خود را فراموش کرده ام</a>
+
+                @*<div class="form-auth-row">
+                        <label class="ui-checkbox">
+                            <input type="checkbox" value="1" name="login" checked="">
+                            <span class="ui-checkbox-check"></span>
+                        </label>
+                        <label class="remember-me">مرا به خاطر داشته باش</label>
+                    </div>*@
             </div>
-            <div class="md-form-group md-label-floating">
-                <input asp-for="Password" class="md-form-control" type="password" name="password" minlength="6" data-msg-minlength="Password must be 6 characters or more." data-msg-required="Please enter your password." required>
-                <label class="md-control-label">Password</label>
-            </div>
-            <div class="md-form-group md-custom-controls">
-                @*<label class="custom-control custom-control-primary custom-checkbox">
-                                <input class="custom-control-input" type="checkbox" checked="checked">
-                                <span class="custom-control-indicator"></span>
-                                <span class="custom-control-label">Keep me signed in</span>
-                            </label>*@
-                <span aria-hidden="true"> · </span>
-                <a href="#">رمز عبور را فراموش کرده اید؟</a>
-            </div>
-            <button class="btn btn-primary btn-block" type="submit">ورود</button>
         </form>
+
+        <div class="account-footer">
+            <span>کاربر جدید هستید؟</span>
+            <a asp-controller="Account" asp-action="Register" class="btn-link-register">ثبت نام در سایت</a>
+        </div>
     </div>
 </div>
 
+@*<div class="col-lg-4 col-md-6 col-xs-12 mx-auto">
+        <div class="account-box">
+            <span class="account-head-line">@ViewBag.Title</span>
+            <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewBag.ReturnUrl" class="form-horizontal">
+                @if (ViewBag.StatusMessage != null)
+                {
+                    @(await Html.PartialAsync("_StatusMessage", (string)ViewBag.StatusMessage))
+                }
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="Mobile" class="control-label">شماره موبایل</label>
+                <input asp-for="Mobile" class="input-email-account" placeholder="شماره موبایل خود را وارد نمایید" /><span class="mdi mdi-account-outline" style="top: 55px;"></span>
+                <span asp-validation-for="Mobile" class="text-danger"></span>
+
+                <label asp-for="Password" class="control-label">رمز عبور</label>
+                <input asp-for="Password" class="input-password" placeholder="رمز عبور خود را وارد نمایید" /><i class="mdi mdi-lock" style="top: 146px;"></i>
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <div class="parent-btn">
+                    <button type="submit" class="dk-btn dk-btn-info">
+                        ورود به کاربیوتیک
+                        <i class="fa fa-sign-in sign-in"></i>
+                    </button>
+                </div>
+
+                <div class="form-auth-row">
+                    <label class="ui-checkbox">
+                        <input type="checkbox" value="1" name="login" checked="">
+                        <span class="ui-checkbox-check"></span>
+                    </label>
+                    <label class="remember-me">مرا به خاطر داشته باش</label>
+                </div>
+                <a asp-action="ForgotPassword" class="account-link-password">رمز عبور خود را فراموش کرده ام</a>
+            </form>
+        </div>
+
+    </div>*@
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+}
