@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Student
+
+<!DOCTYPE html>
 <html class="no-js" dir="rtl" lang="fa-IR">
 <head>
     <meta charset="UTF-8">
@@ -168,8 +170,8 @@
                                 </div>
 
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">تحصیلات پدر</label>
-                                    <select class="form-control">
+                                    <label asp-for="IdFatherEdu" class="control-label">تحصیلات پدر</label>
+                                    <select asp-for="IdFatherEdu" asp-items="@ViewBag.educationType" class="form-control">
                                         <option selected="selected" disabled="disabled">انتخاب تحصیلات پدر</option>
                                     </select>
                                     @*<input class="form-control">*@
