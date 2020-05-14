@@ -48,12 +48,12 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!register.IsTermsAccepted)
-                {
-                    ModelState.AddModelError(String.Empty, "پذیرفتن حریم خصوصی و شرایط قوانین الزامی است.");
+                //if (!register.IsTermsAccepted)
+                //{
+                //    ModelState.AddModelError(String.Empty, "پذیرفتن حریم خصوصی و شرایط قوانین الزامی است.");
 
-                    return View(register);
-                }
+                //    return View(register);
+                //}
 
                 var user = new ApplicationUser
                 {
@@ -144,7 +144,7 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(login.userName);
+                var user = await _userManager.FindByNameAsync(login.Mobile);
 
                 if (user?.IsBlocked == true)
                 {
@@ -153,7 +153,7 @@ namespace School.Controllers
 
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(login.userName, login.Password, false, true);
+                var result = await _signInManager.PasswordSignInAsync(login.Mobile, login.Password, false, true);
                 if (result.Succeeded)
                 {
                     var userRole = await _userManager.GetRolesAsync(user);
@@ -164,6 +164,21 @@ namespace School.Controllers
                     }
 
                     return RedirectToAction("Index", "Home");
+                }
+
+                if (result.IsNotAllowed)
+                {
+                    user = await _userManager.FindByNameAsync(login.Mobile);
+
+                    if (!await _userManager.IsEmailConfirmedAsync(user))
+                    {
+                        var link = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+                        await _smsSender.SendSmsAsync(login.Mobile, SmsTypes.Register,
+                            Helper.GenerateShortenCode(login.Mobile, link).ToString());
+
+                        return RedirectToAction(nameof(ConfirmMobile), new { userId = login.Mobile });
+                    }
                 }
 
                 if (result.IsLockedOut)

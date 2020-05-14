@@ -12,7 +12,7 @@ namespace School.ViewModels
         [Required(ErrorMessage = "وارد کردن {0} الزامی است")]
         [Display(Name = "نام کاربری")]
         [Remote("VerifyMobile", "Account")]
-        public string userName { get; set; }
+        public string Mobile { get; set; }
 
         [Required(ErrorMessage = "وارد کردن {0} الزامی است")]
         [DataType(DataType.Password)]

@@ -127,7 +127,7 @@
     <section id="blog" class="single section page">
         <div class="container">
             <div class="row">
-                <form action="">
+                <form asp-controller="Register" asp-action="RegisterStudent" method="post">
                     <div class="col-md-8 col-sm-12 col-xs-12">
                         <div class="blog-comments">
 
@@ -205,8 +205,8 @@
                                 </div>
 
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">تلفن منزل</label>
-                                    <input class="form-control">
+                                    <label asp-for="Phone" class="control-label">تلفن منزل</label>
+                                    <input asp-for="Phone" class="form-control">
                                 </div>
 
                                 <!-----------hr------------->
@@ -218,10 +218,10 @@
                                         <label class="control-label">آدرس و شماره تماس محل کار پدر</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input class="form-control" placeholder="آدرس">
+                                        <input asp-for="FatherJobAddress" class="form-control" placeholder="آدرس">
                                     </div>
                                     <div class="col-md-4">
-                                        <input class="form-control" placeholder="تلفن">
+                                        <input asp-for="FatherJobTell" class="form-control" placeholder="تلفن">
                                     </div>
                                 </div>
 
@@ -230,10 +230,10 @@
                                         <label class="control-label">آدرس و شماره تماس محل کار مادر</label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input class="form-control" placeholder="آدرس">
+                                        <input asp-for="MotherJobAddress" class="form-control" placeholder="آدرس">
                                     </div>
                                     <div class="col-md-4">
-                                        <input class="form-control" placeholder="تلفن">
+                                        <input asp-for="MotherJobTell" class="form-control" placeholder="تلفن">
                                     </div>
                                 </div>
 
@@ -249,30 +249,30 @@
 
 
                                 <div class="mt-2 col-md-12">
-                                    <label class="control-label">راست/چپ دست؟</label>
+                                    <label class="control-label">چپ دست؟</label>
                                     <div class="mt-05">
-                                        <input name="LeftOrRight" type="radio"> بله
-                                        <input name="LeftOrRight" type="radio"> خیر
+                                        <input asp-for="RightOrLeft" name="LeftOrRight" type="radio"> بله
+                                        @*<input name="LeftOrRight" type="radio"> خیر*@
                                     </div>
                                 </div>
                                 <!-----------hr------------->
-                                <div class="hr  col-md-12"></div>
+                                @*<div class="hr  col-md-12"></div>*@
                                 <!-----------hr------------->
-                                <div class="mt-2 col-md-12">
+                                @*<div class="mt-2 col-md-12">
                                     <label class="control-label">آیا ثبت نام اولی هستید؟</label>
                                     <div class="mt-05">
                                         <input name="firstRegister" type="radio"> بله
                                         <input name="firstRegister" type="radio"> خیر
                                     </div>
-                                </div>
+                                </div>*@
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
                                     <label class="control-label">آیا پدر مادر مطعلقه می باشند؟</label>
                                     <div class="mt-05">
-                                        <input name="Divorced" type="radio"> بله
-                                        <input name="Divorced" type="radio"> خیر
+                                        <input asp-for="IsDivorced" value="1" name="Divorced" type="radio"> بله
+                                        <input asp-for="IsDivorced" value="0" name="Divorced" type="radio"> خیر
                                     </div>
                                 </div>
                                 <!-----------hr------------->
@@ -281,16 +281,16 @@
 
 
                                 <div class="mt-2 col-md-12">
-                                    <label class="control-label">شماره تماس پدر</label>
-                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
+                                    <label asp-for="FatherMobile" class="control-label">شماره تماس پدر</label>
+                                    <input asp-for="FatherMobile" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
-                                    <label class="control-label">شماره تماس مادر</label>
-                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
+                                    <label asp-for="MotherMobile" class="control-label">شماره تماس مادر</label>
+                                    <input asp-for="MotherMobile" type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <div class="mt-6 col-md-12">
@@ -315,7 +315,7 @@
             },
             "recaptcha": { "messages": { "empty": "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f." } }
         };
-                    /* ]]> */
+                        /* ]]> */
     </script>
     <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
     <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/bootstrap.js'></script>

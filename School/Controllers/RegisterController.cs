@@ -35,5 +35,31 @@ namespace School.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterStudent(Student model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                model.IdUser = user.Id;
+
+                _context.Students.Add(model);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
+
+            return View("Index",model);
+        }
     }
 }
