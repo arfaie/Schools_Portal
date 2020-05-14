@@ -1,17 +1,16 @@
-﻿
-@{
-    ViewData["Title"] = "به سایت مدرسه فردا خوش آمدید";
-    Layout = "";
-}
+﻿@model Student
 
 <!DOCTYPE html>
-
 <html class="no-js" dir="rtl" lang="fa-IR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <title>مدرسه فردا</title>
+    <link rel='dns-prefetch' href='//fonts.googleapis.com'>
+    <link rel='dns-prefetch' href='//s.w.org'>
+    <link rel="alternate" type="application/rss+xml" title="قالب وردپرس &raquo; مدرسه" href="index.rss?feed=rss2">
+    <link rel="alternate" type="application/rss+xml" title="قالب وردپرس &raquo;  مدرسه" href="index-1.rss?feed=comments-rss2">
     <link href="~/wp-content/themes/business-portfolio/assets/css/registerStyle.css" rel="stylesheet" />
     <script type="text/javascript">
         window._wpemojiSettings = {
@@ -116,35 +115,6 @@
 </head>
 
 <body class="rtl post-template-default single single-post postid-9 single-format-standard wp-custom-logo">
-
-    <header id="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 col-sm-12 col-xs-12">
-                    <!-- Logo -->
-                    @await Component.InvokeAsync("MainSettingLogo")
-                    <!--/ End Logo -->
-                </div>
-                <div class="col-md-10 col-sm-12 col-xs-12">
-                    <div class="nav-area">
-                        <!-- Main Menu -->
-                        <nav class="mainmenu">
-                            <div class="mobile-nav"></div>
-                            <div class="collapse navbar-collapse">
-                                <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
-                                    <ul id="menu-%d8%a7%d8%b5%d9%84%db%8c-%d8%aa%da%a9-%d8%b5%d9%81%d8%ad%d9%87" class="nav navbar-nav ml-auto">
-                                        <li><a title="خانه" asp-controller="Home">برگشت به خانه</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <!--/ End Main Menu -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Start Header -->
     <!--/ End Header -->
     <!-- Start Breadcrumbs -->
@@ -156,9 +126,7 @@
                     <div class="col-md-8 col-sm-12 col-xs-12">
                         <div class="blog-comments">
 
-                            <div style="padding: 10px 10px">
-                                <h3>فرم ثبت نام</h3>
-                            </div>
+                            <div style="padding: 10px 10px"><h3>فرم ثبت نام</h3></div>
                             <div style="height: 645px">
                                 <div class="mt-2 col-md-4">
                                     <label class="control-label">نام</label>
@@ -202,8 +170,8 @@
                                 </div>
 
                                 <div class="mt-2 col-md-4">
-                                    <label class="control-label">تحصیلات پدر</label>
-                                    <select class="form-control">
+                                    <label asp-for="IdFatherEdu" class="control-label">تحصیلات پدر</label>
+                                    <select asp-for="IdFatherEdu" asp-items="@ViewBag.educationType" class="form-control">
                                         <option selected="selected" disabled="disabled">انتخاب تحصیلات پدر</option>
                                     </select>
                                     @*<input class="form-control">*@
@@ -309,7 +277,7 @@
 
                                 <div class="mt-2 col-md-12">
                                     <label class="control-label">شماره تماس پدر</label>
-                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if (this.value.length == 11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <!-----------hr------------->
@@ -317,7 +285,7 @@
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
                                     <label class="control-label">شماره تماس مادر</label>
-                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if (this.value.length == 11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
+                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==11) return false;" class="form-control" placeholder="09xxxxxxxxx" />
                                 </div>
 
                                 <div class="mt-6 col-md-12">
@@ -340,14 +308,9 @@
                 "root": "https:\/\/demo.hamyarwp.com\/business-portfolio\/index.php?rest_route=\/contact-form-7\/v1",
                 "namespace": "contact-form-7\/v1"
             },
-            "recaptcha": {
-                "messages": {
-                    "empty":
-                        "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f."
-                }
-            }
+            "recaptcha": { "messages": { "empty": "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f." } }
         };
-        /* ]]> */
+                /* ]]> */
     </script>
     <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
     <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/bootstrap.js'></script>
