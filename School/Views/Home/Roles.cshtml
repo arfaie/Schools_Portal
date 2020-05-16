@@ -127,7 +127,7 @@
     <section id="blog" class="single section page">
         <div class="container">
             <div class="row">
-                <form asp-controller="Register" asp-action="RegisterStudent" method="post">
+                <form asp-controller="Home" asp-action="Roles" method="post">
                     <div class="col-md-8 col-sm-12 col-xs-12">
                         <div class="blog-comments">
 
@@ -141,6 +141,9 @@
                                             <input value="1" name="acceptedrole" type="checkbox"><span class="@ViewBag.checkbox">شرایط فوق را به صورت کامل مطالعه و با آگاهی کامل مفاد آن را تایید می نمایم.</span>
                                             @*<input name="LeftOrRight" type="radio"> خیر*@
                                         </div>
+                                    </div>
+                                    <div class="mt-6 col-md-12">
+                                        <input type="submit" class="btn btn-success btn-block" value="ثبت نام">
                                     </div>
                                 </div>
                             </div>
@@ -162,7 +165,7 @@
             },
             "recaptcha": { "messages": { "empty": "\u0644\u0637\u0641\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f \u06a9\u0647 \u0634\u0645\u0627 \u06cc\u06a9 \u0631\u0628\u0627\u062a \u0646\u06cc\u0633\u062a\u06cc\u062f." } }
         };
-                                    /* ]]> */
+                                            /* ]]> */
     </script>
     <script type='text/javascript' src='~/wp-content/plugins/contact-form-7/includes/js/scripts.js'></script>
     <script type='text/javascript' src='~/wp-content/themes/business-portfolio/assets/js/bootstrap.js'></script>

@@ -41,7 +41,7 @@ namespace School.Controllers
         [HttpGet]
         public async Task<IActionResult> Roles()
         {
-            var select = await _context.Roles.ToListAsync();
+            var select = await _context.Roles.FirstOrDefaultAsync();
 
             ViewBag.checkbox = "";
 
@@ -60,7 +60,9 @@ namespace School.Controllers
 
             ViewBag.checkbox = "text-danger";
 
-            return View();
+            var select = await _context.Roles.FirstOrDefaultAsync();
+
+            return View(select);
         }
     }
 }
