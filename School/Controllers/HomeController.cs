@@ -43,7 +43,24 @@ namespace School.Controllers
         {
             var select = await _context.Roles.ToListAsync();
 
+            ViewBag.checkbox = "";
+
             return View(select);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Roles(int acceptedrole)
+        {
+            if (acceptedrole == 1)
+            {
+                ViewBag.checkbox = "";
+
+                return RedirectToAction("Index", "Register");
+            }
+
+            ViewBag.checkbox = "text-danger";
+
+            return View();
         }
     }
 }
