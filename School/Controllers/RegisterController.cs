@@ -31,6 +31,13 @@ namespace School.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            var select = await _context.Students.FirstOrDefaultAsync(s => s.IdUser == User.Id);
+
+            //if (select.IsPreSubmit)
+            //{
+
+            //}
+
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
             return View();
@@ -59,7 +66,7 @@ namespace School.Controllers
 
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
-            return View("Index",model);
+            return View("Index", model);
         }
     }
 }
