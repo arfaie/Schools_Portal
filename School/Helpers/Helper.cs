@@ -18,6 +18,8 @@ namespace School.Helpers
 		public static string ThumbnailImagePath { get; set; } = "/upload/thumbnailimage/";
 		public static string NormalImagePath { get; set; } = "/upload/normalimage/";
 
+        public static string LogoPath { get; set; } = "/images/logo/";
+
         private static readonly List<ConfirmationCodeViewModel> ConfirmationCodes = new List<ConfirmationCodeViewModel>();
 
         public static int GenerateShortenCode(string mobile, string link)

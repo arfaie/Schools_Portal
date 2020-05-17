@@ -3,7 +3,8 @@
 
 @{
     ViewBag.Title = "لیست دانش آموزان";
-    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+
 }
 
 <div style="color:white;text-align:center" class=@TempData["css"]>
@@ -36,12 +37,12 @@
                     <div class="md-form-group md-label-floating col-md-6">
                         <div class="margin-top">
                             @*<div class="col-xs-6 col-md-6">
-                                <a class="btn btn-primary marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
-                                   data-target="#modal-action">
-                                    <i class="glyphicon glyphicon-plus"></i>
-                                    افزودن دانش آموز جدید
-                                </a>
-                            </div>*@
+                                    <a class="btn btn-primary marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
+                                       data-target="#modal-action">
+                                        <i class="glyphicon glyphicon-plus"></i>
+                                        افزودن دانش آموز جدید
+                                    </a>
+                                </div>*@
                         </div>
                     </div>
                     <table id="example" class="table table-striped table-nowrap dataTable" cellspacing="0" width="100%">
@@ -64,13 +65,17 @@
 
                                     <tr>
                                         <td>@(i++)</td>
-                                        @*<td>@item.Title</td>*@
+                                        <td>@item.FirstName</td>
+                                        <td>@item.LastName</td>
+                                        <td>@item.BtirhPlace</td>
+                                        <td>@item.OldSchool</td>
+                                        <td>@item.LastYearAvreage</td>
 
                                         <td>
-                                            <a class="btn btn-info" id="editagency" data-toggle="modal" asp-action="AddEdit"
-                                               data-target="#modal-action" asp-route-id="@item.Id">
+                                            <a class="btn btn-primary" id="editBookgroup" asp-area="Admin" asp-controller="Student" asp-action="Accept"
+                                               asp-route-id="@item.Id">
                                                 <i class="glyphicon glyphicon-pencil"></i>
-                                                ویرایش
+                                                مشخصات
                                             </a>
 
                                             <a class="btn btn-danger" id="showagency" data-toggle="modal" asp-action="Delete"

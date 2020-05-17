@@ -29,6 +29,7 @@ namespace School.Data
         public DbSet<Factor> Factors { get; set; }
         public DbSet<FactorItem> FactorItems { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<Level> Levels { get; set; }
 
 
 
@@ -54,8 +55,11 @@ namespace School.Data
             builder.Entity<Factor>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<FactorItem>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
             builder.Entity<Payment>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
+            builder.Entity<Level>().Property(x => x.Id).HasDefaultValueSql("NEWID()");
 
             addEducationType(builder);
+
+            addLevel(builder);
 
         }
 
@@ -68,6 +72,24 @@ namespace School.Data
                 new EducationType { Id = "6f9c65d681937c32dafcec06", Title = "لیسانس" },
                 new EducationType { Id = "6f9c65d681937c32dafcec07", Title = "فوق لیسانس" },
                 new EducationType { Id = "6f9c65d681937c32dafcec08", Title = "دکتری" }
+            );
+        }
+
+        private static void addLevel(ModelBuilder builder)
+        {
+            builder.Entity<Level>().HasData(
+                new Level {Id = "afde4ad493d2eb181cb87f9a", Title = "اول"},
+                new Level {Id = "458813190d896a4dd601ae18", Title = "دوم"},
+                new Level {Id = "7a7c4e6aade4c0a7636508ae", Title = "سوم"},
+                new Level {Id = "239443dfa6a286607d777e71", Title = "چهارم"},
+                new Level {Id = "1c76d0b4dde0e7a116273075", Title = "پنجم"},
+                new Level {Id = "56b04a2c864e3706727f7d41", Title = "ششم"},
+                new Level {Id = "72d54246a837967a52bfe5ad", Title = "هفتم"},
+                new Level {Id = "738e40ca96f4308399678ab5", Title = "هشتم"},
+                new Level {Id = "02e1122fc0d3a65db4cdc514", Title = "نهم"},
+                new Level {Id = "cfd14d118be838a685e20e3e", Title = "دهم"},
+                new Level {Id = "096a4bff94237b95c131ee9d", Title = "یازدهم"},
+                new Level {Id = "4d414cba8d6965cc0a482381", Title = "دوازدهم"}
             );
         }
     }
