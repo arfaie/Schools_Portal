@@ -99,7 +99,7 @@ namespace School
 
             services.AddMvc();
 
-            services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
         }
