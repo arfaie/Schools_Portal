@@ -53,6 +53,7 @@ namespace School.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 //if (!register.IsTermsAccepted)
                 //{
                 //    ModelState.AddModelError(String.Empty, "پذیرفتن حریم خصوصی و شرایط قوانین الزامی است.");

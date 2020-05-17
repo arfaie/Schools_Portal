@@ -45,6 +45,10 @@
 <div class="col-lg-4 col-md-6 col-xs-12 mx-auto">
     <div class="account-box">
         <span class="account-head-line">@ViewBag.Title</span>
+        @if (TempData["StatusMessage"] != null)
+        {
+            <label class="text-danger">@TempData["StatusMessage"]</label>
+        }
         <form asp-controller="Account" asp-action="Login">
             <div class="content-account">
                 <label asp-for="Mobile"></label>
@@ -64,12 +68,12 @@
                 <a asp-action="ForgotPassword" class="account-link-password">رمز عبور خود را فراموش کرده ام</a>
 
                 @*<div class="form-auth-row">
-                        <label class="ui-checkbox">
-                            <input type="checkbox" value="1" name="login" checked="">
-                            <span class="ui-checkbox-check"></span>
-                        </label>
-                        <label class="remember-me">مرا به خاطر داشته باش</label>
-                    </div>*@
+                    <label class="ui-checkbox">
+                        <input type="checkbox" value="1" name="login" checked="">
+                        <span class="ui-checkbox-check"></span>
+                    </label>
+                    <label class="remember-me">مرا به خاطر داشته باش</label>
+                </div>*@
             </div>
         </form>
 
