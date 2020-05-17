@@ -4,7 +4,8 @@
 	{
 		Register = 1,
         StudentRegister = 2,
-        DoneOrder=3,
+        PaymentDone = 3,
         ResendUserPass = 4,
+        ResetPass=5,
     }
 }

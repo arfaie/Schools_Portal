@@ -1,0 +1,292 @@
+﻿
+@model School.Models.Student
+
+@{
+    ViewData["Title"] = "ویرایش پروفایل";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+@{
+    //string ManagerName = Model.ManagerName == null ? "" : Model.ManagerName;
+    //string Email = Model.User.Email == null ? "" : Model.User.Email;
+    //string Mobile = Model.User.PhoneNumber == null ? "" : Model.User.PhoneNumber;
+    //long NationalCode = Model.User.NationalCode == 0 ? 0 : Model.User.NationalCode;
+    //string Name = Model.Name == null ? "" : Model.Name;
+    //string SchoolNumber = Model.SchoolNumber == null ? "" : Model.SchoolNumber;
+    //string Post = Model.Post == null ? "-" : Model.Post;
+}
+<style>
+    select {
+        width: 40% !important
+    }
+    /* The container */
+    .container_ {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default checkbox */
+        .container_ input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+    /* Create a custom checkbox */
+    .checkmark_ {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        margin-left: 50px;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .container_:hover input ~ .checkmark_ {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container_ input:checked ~ .checkmark_ {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark_:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container_ input:checked ~ .checkmark_:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container_ .checkmark_:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+    a:hover {
+        color: crimson
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .top-nav .navbar-nav > li > a, .top-nav .navbar-nav > .open > a {
+        color: antiquewhite
+    }
+</style>
+<!--    responsive-megamenu-mobile----------------->
+<!--search-category------------------------->
+<div>
+    @(await Html.PartialAsync("_UserPanel", Model))
+</div>
+<div class="col-lg-9 col-md-8 col-xs-12 pull-right">
+    <div class="col-lg-12 col-xs-12 pull-right">
+        <div class="profile-navbar">
+            <div class="profile-navbar-back-alignment">
+                <a asp-controller="UserProfile" asp-action="Index" class="profile-navbar-btn-back">بازگشت</a>
+                <h4 class="edit-personal">
+                    ویرایش اطلاعات شخصی
+                </h4>
+            </div>
+        </div>
+        <form asp-controller="UserProfile" asp-action="EditProfile" method="post">
+            <div class="profile-stats">
+                <div class="form-legal-row">
+                    <div class="col-lg-6 col-xs-12 mx-auto">
+                        <div class="form-legal-col">
+                            <fieldset class="form-legal-fieldset">
+                                <h4 class="form-legal-headline">حساب شخصی</h4>
+                                <input type="hidden" asp-for="Id" class="form-control" />
+                                <div class="form-legal-item">
+                                    <span style="padding-bottom:35px !important;color:orangered">تکمیل اطلاعات زیر جهت خرید الزامی میباشد.</span>
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5" for="name-first">نام و نام خانوادگی</label>
+                                    @*<input type="text" asp-for="@Model.ManagerName" value="@ManagerName" class="input-name-first" placeholder="نام و نام خانوادگی خود را وارد کنید">*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5" for="name-first">نام مدرسه</label>
+                                    @*<input type="text" asp-for="@Model.Name" value="@Name" class="input-name-first" placeholder="نام مدرسه را وارد کنید">*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5" for="name-first">سمت در مدرسه</label>
+                                    @*<input type="text" asp-for="@Model.Post" value="@Post" class="input-name-first" placeholder="سمت در مدرسه را وارد کنید">*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5" for="name-first">شماره تماس مدرسه</label>
+                                    @*<input type="number" asp-for="@Model.SchoolNumber" value="@SchoolNumber" class="input-name-first" placeholder="شماره تماس مدرسه را وارد کنید">*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5">نوع مدرسه</label>
+                                    @*<select name="SchoolTypeId" id="SchoolEdit" asp-for="@Model.SchoolTypeId" asp-items="@(new SelectList(ViewBag.SchoolTypes, "Id", "Title"))">
+                                        <option value="0" selected="selected" disabled="disabled">نوع مدرسه خود را انتخاب کنید</option>
+                                    </select>*@
+                                </div>
+                                <div class="form-legal-item" style=" justify-content: center; align-items: center; text-align: right">
+                                    <label class="h5">مقطع </label>
+                                    @*@{
+                                        IEnumerable<Level> level = ViewBag.Levels;
+                                        int i = 0;
+                                        foreach (var item in level)
+                                        {
+                                            i++;
+                                            <label class="container_">
+                                                @if (Model.SchoolsLevels.Where(x => x.LevelId == item.Id).Any())
+                                                {
+                                                    <input id="@i" value="@item.Id" name="LevelIds" type="checkbox" checked="checked">
+                                                }
+                                                else
+                                                {
+                                                    <input id="@i" value="@item.Id" name="LevelIds" type="checkbox">
+                                                }
+                                                @item.Name
+                                                <span class="checkmark_"></span>
+                                            </label>
+                                        }
+                                    }*@
+
+                                </div>
+                                <div style="padding-top:85px !important"> </div>
+                                <div class="form-legal-item">
+                                    <label class="h5">نحوه  آشنایی با سهاد</label>
+                                    @*<select name="HowMetId" id="HowMetEdit" asp-for="@Model.HowMetId" asp-items="@(new SelectList(ViewBag.HowMets, "Id", "Name"))">
+                                        <option value="0" selected="selected" disabled="disabled">نحوه آشنایی</option>
+                                    </select>*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5">استان</label>
+                                    @*<select name="" asp-for="@Model.City.State.Id" id="drpState" asp-items="@(new SelectList(ViewBag.States, "Id", "Name"))">
+                                        <option value="0" selected="selected" disabled="disabled">استان</option>
+                                    </select>*@
+                                </div>
+                                <div class="form-legal-item">
+                                    <label class="h5">شهر</label>
+                                    @*<select name="CityId" id="drpCity" asp-for="@Model.CityId" asp-items="@(new SelectList(ViewBag.Cities, "Id", "Name"))">
+                                        <option value="0" selected="selected" disabled="disabled">شهر</option>
+                                    </select>*@
+                                </div>
+                                @*<div class="form-legal-item">
+                                        <label class="h5" for="code-national">کد ملی</label>
+                                        <input type="number" asp-for="@Model.User.NationalCode" value="@NationalCode" class="input-code-national" placeholder="کد ملی خود را وارد کنید">
+                                    </div>
+
+
+
+                                    <div class="form-legal-item">
+                                        <label for="phone">شماره موبایل</label>
+                                        <input type="text" asp-for="@Model.User.PhoneNumber" value="@Mobile" class="input-code-national" placeholder="شماره موبایل خود را وارد کنید">
+                                    </div>
+
+                                    <div class="form-legal-item">
+                                        <label for="email">آدرس ایمیل</label>
+                                        <input type="text" asp-for="@Model.User.Email" value="@Email" class="input-code-national" placeholder="آدرس ایمیل خود را وارد کنید">
+                                    </div>*@
+
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-legal-row-submit">
+                    <div class="parent-btn">
+                        <button type="submit" id="btnEditProfile_" disabled class="dk-btn dk-btn-danger">
+                            مقطع انتخاب نشده است
+                            <i class="fa fa-bolt sign-in"></i>
+                        </button>
+                        <button type="submit" id="btnEditProfile" class="dk-btn dk-btn-info">
+                            ثبت اطلاعات کاربری
+                            <i class="fa fa-check sign-in"></i>
+                        </button>
+                    </div>
+                    <a asp-controller="UserProfile" asp-action="Index" class="btn-default">انصراف</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+
+        $(document).ready(function () {
+
+            var Cities = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Cities))');
+
+            $("#drpState").change(function () {
+                var id = $("#drpState").val();
+
+                $("#drpCity").empty();
+                var items = '<option value="0" selected="selected" disabled="disabled">شهر</option>';
+
+                $.each(Cities, function (index, value) {
+                    if (value.StateId === id) {
+                        items += '<option value="' + value.Id + '">' + value.Name + '</option>';
+                    }
+                });
+
+                $("#drpCity").html(items);
+            });
+
+
+        });
+
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            var bntDanger = $('#btnEditProfile_');
+            var bntInfo = $('#btnEditProfile');
+            var ch1 = $("#1");
+            var ch2 = $("#2");
+            var ch3 = $("#3");
+            checkboxCheck();
+            function checkboxCheck() {
+                if (!ch1.is(':checked') && !ch2.is(':checked') && !ch3.is(':checked')) {
+                bntDanger.show();
+                bntInfo.hide();
+            } else {
+                bntDanger.hide();
+                bntInfo.show();
+            }
+            };
+            
+            $("input[type='checkbox']").change(function () {
+                checkboxCheck();
+            })
+        });
+    </script>
+}

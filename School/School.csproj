@@ -37,6 +37,13 @@
     <None Include="Views\Shared\Components\MainGallery\Default.cshtml" />
     <None Include="Views\Shared\Components\MainService\Default.cshtml" />
     <None Include="Views\Shared\Components\MainSlider\Default.cshtml" />
+    <None Include="Views\UserProfile\AddEditUserAddress.cshtml" />
+    <None Include="Views\UserProfile\ChangePasswordProfile.cshtml" />
+    <None Include="Views\UserProfile\EditProfile.cshtml" />
+    <None Include="Views\UserProfile\History.cshtml" />
+    <None Include="Views\UserProfile\Index.cshtml" />
+    <None Include="Views\UserProfile\orderDetaile.cshtml" />
+    <None Include="Views\UserProfile\userOrders.cshtml" />
     <None Include="wwwroot\Panel\css\materialdesignicons.css.map" />
     <None Include="wwwroot\Panel\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\Panel\fonts\fontawesome-webfont.woff2" />

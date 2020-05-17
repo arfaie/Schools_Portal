@@ -35,15 +35,15 @@ namespace School.Services
 
             if (type == SmsTypes.Register)
             {
-                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token2=" + token2 + "&template=SchoolPortalRegister");
+                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token10=" + token2 + "&template=SchoolPortalRegister");
             }
-            else if (type == SmsTypes.StudentRegister)
+            else if (type == SmsTypes.ResetPass)
             {
-                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token2=" + token2 + "&template=CarbioticReset");
+                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&template=SahadResetPass");
             }
-            else if (type == SmsTypes.DoneOrder)
+            else if (type == SmsTypes.PaymentDone)
             {
-                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token10=" + token2 + "&template=DoneOrder");
+                response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token10=" + token2 + "&template=SchoolPaymentDone");
             }
 
             if (response != null && response.IsSuccessStatusCode)

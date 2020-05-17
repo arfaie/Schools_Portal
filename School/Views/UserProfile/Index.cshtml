@@ -1,0 +1,62 @@
+﻿@using School.Models;
+@model Student
+
+@{
+    ViewData["Title"] = "کاربری";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+@{
+    string FName = Model.FirstName == "" ? "-" : Model.FirstName;
+    string LName = Model.LastName == "" ? "-" : Model.LastName;
+    string FatherMobile = Model.FatherMobile == "" ? "-" : Model.FatherMobile;
+    string Phone = Model.Phone == "" ? "-" : Model.Phone;
+    //ViewBag.UserFullName = fullName;
+    //ViewBag.UserMobile = Mobile;
+
+}
+
+<div>
+    @(await Html.PartialAsync("_UserPanel"))
+</div>
+<div class="col-lg-9 col-md-8 col-xs-12 pull-right">
+    <div class="col-lg-12 col-xs-12 pull-right">
+        <div class="headline-profile">
+            <span>پروفایل کاربری</span>
+        </div>
+        <div class="profile-stats">
+            <div class="profile-stats-row">
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
+                    <div class="profile-stats-col">
+
+                        <p><span> نام :</span>@FName</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
+                    <div class="profile-stats-col">
+                        @if (FName == null)
+                        {
+                            FName = "-";
+                        }
+                        <p><span>نام خانوادگی :</span>@FName</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
+                    <div class="profile-stats-col">
+                        <p><span>شماه همراه پدر :</span>@FatherMobile</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
+                    <div class="profile-stats-col">
+                        <p><span>تلفن منزل :</span>@Phone</p>
+                    </div>
+                </div>
+
+                <div class="profile-stats-action">
+                    <a asp-controller="UserProfile" asp-action="EditProfile" class="link-spoiler-edit"><i class="fa fa-pencil"></i>ویرایش پروفایل</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
