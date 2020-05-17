@@ -90,6 +90,8 @@ namespace School.Models
         [Display(Name = "تاریخ ثبت نام")]
         public DateTime SubmitDate { get; set; }
 
+        
+
 
     }
 }
