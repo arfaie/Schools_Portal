@@ -90,7 +90,13 @@ namespace School.Models
         [Display(Name = "تاریخ ثبت نام")]
         public DateTime SubmitDate { get; set; }
 
-        
+        [Display(Name = "مقطع")]
+        public string LevelId { get; set; }
+
+        [ForeignKey("LevelId")]
+        public virtual Level Level { get; set; }
+
+
 
 
     }
