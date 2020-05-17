@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using School.Data;
 using School.Helpers;
 using School.Helpers.OptionEnums;
 using School.Models;
@@ -23,13 +25,15 @@ namespace School.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
         private readonly ISmsSender _smsSender;
+        private readonly ApplicationDbContext _context;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager, ISmsSender smsSender)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager, ISmsSender smsSender, ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _smsSender = smsSender;
+            _context = context;
         }
 
         #region Register
@@ -69,10 +73,12 @@ namespace School.Controllers
 
                 if (result.Succeeded)
                 {
+                    var SchoolName =_context.Settings.FirstOrDefault().SchoolName;
+
                     var link = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
                     await _smsSender.SendSmsAsync(register.Mobile, SmsTypes.Register,
-                        Helper.GenerateShortenCode(register.Mobile, link).ToString());
+                        Helper.GenerateShortenCode(register.Mobile, link).ToString(),SchoolName);
 
                     return RedirectToAction(nameof(ConfirmMobile), new { userId = register.Mobile });
                 }
@@ -286,8 +292,8 @@ namespace School.Controllers
 
                 var link = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-                await _smsSender.SendSmsAsync(forgotPassword.Mobile, SmsTypes.RecoverPassword,
-                    Helper.GenerateShortenCode(forgotPassword.Mobile, link).ToString());
+                //await _smsSender.SendSmsAsync(forgotPassword.Mobile, SmsTypes.RecoverPassword,
+                //    Helper.GenerateShortenCode(forgotPassword.Mobile, link).ToString());
 
                 return RedirectToAction(nameof(ConfirmMobile),
                     new { userId = forgotPassword.Mobile, isResetPassword = forgotPassword.IsResetPassword });

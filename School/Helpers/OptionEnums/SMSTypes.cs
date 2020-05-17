@@ -3,7 +3,7 @@
 	public enum SmsTypes
 	{
 		Register = 1,
-		RecoverPassword = 2,
+        StudentRegister = 2,
         DoneOrder=3,
         ResendUserPass = 4,
     }
