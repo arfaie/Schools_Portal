@@ -73,7 +73,7 @@ namespace School.Controllers
 
                 var link = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-                await _smsSender.SendSmsAsync(Mobile, SmsTypes.StudentRegister,
+                await _smsSender.SendSmsAsync(Mobile, SmsTypes.SchoolRegisterDone,
                     Helper.GenerateShortenCode(Mobile, link).ToString(), SchoolName);
 
                 return RedirectToAction("Index", "Home");
