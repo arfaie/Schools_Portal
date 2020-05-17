@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using School.Models;
+using School.Services;
 
 namespace School
 {
@@ -97,6 +98,9 @@ namespace School
             services.ConfigureApplicationCookie(options => options.LoginPath = "/Account/Login");
 
             services.AddMvc();
+
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+            services.AddTransient<ISmsSender, AuthMessageSender>();
 
         }
 

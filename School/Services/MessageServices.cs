@@ -35,7 +35,7 @@ namespace School.Services
 
 			if (type == SmsTypes.Register)
 			{
-				response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token2=" + "Carbiotic.ir" + "&template=CarbioticRegister");
+				response = await client.GetAsync("v1/6E65695778564344644231365673544D73794E324C7377634149324F7A5270324F6346774D6753666363633D/verify/lookup.json?receptor=" + mobile + "&token=" + token + "&token2=" + "Carbiotic.ir" + "&template=SchoolPortalRegister");
 			}
 			else if (type == SmsTypes.RecoverPassword)
 			{

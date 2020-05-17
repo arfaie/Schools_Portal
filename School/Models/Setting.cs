@@ -18,5 +18,8 @@ namespace School.Models
 
         [Display(Name = "لگو")]
         public string Logo { get; set; }
+
+        [Display(Name = "نام مدرسه")]
+        public string SchoolName { get; private set; }
     }
 }
