@@ -1,5 +1,5 @@
-﻿@using Punas.Helpers;
-@model IEnumerable<Order>
+﻿@using School.Helpers;
+@model IEnumerable<Payment>
 
 @{
     ViewData["Title"] = "سفارشات کاربر";
@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @{
+                    @*@{
                         int i = 1;
                         foreach (var item in Model)
                         {
@@ -37,7 +37,7 @@
                                 <td>@(i++)</td>
                                 <td class="order-code">@item.Factor?.FactorCode</td>
                                 <td>@item.TransactionDate.ToPersianDateString()</td>
-                                <td>@(item.Factor?.FinalPrice - item.Factor?.TotalDiscount)</td>
+                                <td>@(item.Factor?.FinalPrice - item.Factor?.TotalPrice)</td>
                                 <td>@item.Factor?.FinalPrice تومان</td>
                                 @if (item.TransactionStatus)
                                 {
@@ -52,7 +52,7 @@
                                 <td class="detail"><a asp-controller="UserProfile" asp-action="orderDetaile" asp-route-id="@item.Id"><i class="fa fa-angle-left"></i></a></td>
                             </tr>
                         }
-                    }
+                    }*@
 
                 </tbody>
             </table>
@@ -100,7 +100,7 @@
                                     </div>
                                     <div class="profile-info-row">
                                         <div class="profile-info-label">مبلغ قابل پرداخت</div>
-                                        <div class="profile-info-value">@item.Factor?.FinalPrice</div>
+                                        <div class="profile-info-value">@item.Factor?.TotalPrice</div>
                                     </div>
                                 </div>
                             </div>

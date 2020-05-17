@@ -31,12 +31,12 @@
             <div class="profile-stats-row">
                 <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
                     <div class="profile-stats-col">
-                        <p><span> نام و نام خانوادگی :</span>@Model?.Factor?.ApplicationUser?.Schools?.FirstOrDefault().ManagerName</p>
+                        <p><span> نام و نام خانوادگی :</span>@Model?.Factor?.ApplicationUser?.Students?.FirstOrDefault().LastName</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
                     <div class="profile-stats-col">
-                        <p><span>مدرسه: </span>@Model?.Factor?.ApplicationUser?.st?.FirstOrDefault().Name</p>
+                        <p><span>مدرسه: </span>@Model?.Factor?.ApplicationUser?.Students?.FirstOrDefault().LastName</p>
                     </div>
                 </div>
                 @*<div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
@@ -51,12 +51,12 @@
                 </div>*@
                 <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
                     <div class="profile-stats-col">
-                        <p><span>شماره تماس تحویل گیرنده: </span>@Model?.Factor?.User?.Schools?.FirstOrDefault().SchoolNumber</p>
+                        <p><span>شماره تماس تحویل گیرنده: </span>@Model?.Factor?.ApplicationUser?.Students?.FirstOrDefault().FatherMobile</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12 pull-right" style="padding:0;">
                     <div class="profile-stats-col">
-                        <p><span>مبلغ کل:</span>@Model.Factor?.FinalPrice</p>
+                        <p><span>مبلغ کل:</span>@Model.Factor?.TotalPrice</p>
                     </div>
                 </div>
                 <!--                    <a href="#" class="link-spoiler-edit"></a>-->
@@ -119,64 +119,9 @@
                     </div>
                 </div>
             </div>*@
-            <div class="table-orders">
-                @{
-                    foreach (var item in Model.Factor.FactorItems)
-                    {
-                        <table class="table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">تعداد</th>
-                                    <th scope="col">قیمت واحد</th>
-                                    <th scope="col">تخفیف</th>
-                                    <th scope="col">قیمت نهایی</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="@ViewBag.path@item.Product?.ImageName" style="width: 100px; float: right; margin-left: 7px;">
-                                        <h3 style="margin-right: 20px">@item.Product?.Name</h3>
-                                    </td>
-                                    <td class="order-code">@item.UnitCount</td>
-                                    <td>@item.UnitPrice تومان</td>
-                                    <td>@item.Discount تومان</td>
-                                    <td>@((item.UnitPrice * item.UnitCount) - item.Discount) تومان</td>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    }
-                }
-
-            </div>
         </div>
-        @{
-            int i = 1;
-            foreach (var item in Model.Factor.FactorItems)
-            {
-                <div class="col-lg-12 col-md-12 col-xs-12" style="padding:0;">
-                    <div class="product-box-profile">
-                        <div class="product-box-content-profile">
-                            <div class="product-box-count">@(i++)</div>
-                            <a href="#" class="product-box-img">
-                                <img src="@ViewBag.path@item.Product?.ImageName">
-                            </a>
-                            <div class="product-box-title">@item.Product?.Name</div>
-                            @*<div class="product-box-seller"><span>فروشنده: </span><span class="product-box-seller-name">هیلاتل</span></div>*@
-                            @*<div class="product-box-seller"><span></span><span>رنگ : مشکی</span></div>*@
-                            <div class="price-profile">
-                                <div class="price-value-profile">
-                                    @((item.UnitPrice * item.UnitCount) - item.Discount)
-                                    <span class="price-currency"> تومان</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
+       
 
     </div>
 </div>

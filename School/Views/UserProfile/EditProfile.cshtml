@@ -6,13 +6,13 @@
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 @{
-    string ManagerName = Model.ManagerName == null ? "" : Model.ManagerName;
+    //string ManagerName = Model.ManagerName == null ? "" : Model.ManagerName;
     //string Email = Model.User.Email == null ? "" : Model.User.Email;
     //string Mobile = Model.User.PhoneNumber == null ? "" : Model.User.PhoneNumber;
     //long NationalCode = Model.User.NationalCode == 0 ? 0 : Model.User.NationalCode;
-    string Name = Model.Name == null ? "" : Model.Name;
-    string SchoolNumber = Model.SchoolNumber == null ? "" : Model.SchoolNumber;
-    string Post = Model.Post == null ? "-" : Model.Post;
+    //string Name = Model.Name == null ? "" : Model.Name;
+    //string SchoolNumber = Model.SchoolNumber == null ? "" : Model.SchoolNumber;
+    //string Post = Model.Post == null ? "-" : Model.Post;
 }
 <style>
     select {
@@ -131,29 +131,29 @@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5" for="name-first">نام و نام خانوادگی</label>
-                                    <input type="text" asp-for="@Model.ManagerName" value="@ManagerName" class="input-name-first" placeholder="نام و نام خانوادگی خود را وارد کنید">
+                                    @*<input type="text" asp-for="@Model.ManagerName" value="@ManagerName" class="input-name-first" placeholder="نام و نام خانوادگی خود را وارد کنید">*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5" for="name-first">نام مدرسه</label>
-                                    <input type="text" asp-for="@Model.Name" value="@Name" class="input-name-first" placeholder="نام مدرسه را وارد کنید">
+                                    @*<input type="text" asp-for="@Model.Name" value="@Name" class="input-name-first" placeholder="نام مدرسه را وارد کنید">*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5" for="name-first">سمت در مدرسه</label>
-                                    <input type="text" asp-for="@Model.Post" value="@Post" class="input-name-first" placeholder="سمت در مدرسه را وارد کنید">
+                                    @*<input type="text" asp-for="@Model.Post" value="@Post" class="input-name-first" placeholder="سمت در مدرسه را وارد کنید">*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5" for="name-first">شماره تماس مدرسه</label>
-                                    <input type="number" asp-for="@Model.SchoolNumber" value="@SchoolNumber" class="input-name-first" placeholder="شماره تماس مدرسه را وارد کنید">
+                                    @*<input type="number" asp-for="@Model.SchoolNumber" value="@SchoolNumber" class="input-name-first" placeholder="شماره تماس مدرسه را وارد کنید">*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5">نوع مدرسه</label>
-                                    <select name="SchoolTypeId" id="SchoolEdit" asp-for="@Model.SchoolTypeId" asp-items="@(new SelectList(ViewBag.SchoolTypes, "Id", "Title"))">
+                                    @*<select name="SchoolTypeId" id="SchoolEdit" asp-for="@Model.SchoolTypeId" asp-items="@(new SelectList(ViewBag.SchoolTypes, "Id", "Title"))">
                                         <option value="0" selected="selected" disabled="disabled">نوع مدرسه خود را انتخاب کنید</option>
-                                    </select>
+                                    </select>*@
                                 </div>
                                 <div class="form-legal-item" style=" justify-content: center; align-items: center; text-align: right">
                                     <label class="h5">مقطع </label>
-                                    @{
+                                    @*@{
                                         IEnumerable<Level> level = ViewBag.Levels;
                                         int i = 0;
                                         foreach (var item in level)
@@ -172,27 +172,27 @@
                                                 <span class="checkmark_"></span>
                                             </label>
                                         }
-                                    }
+                                    }*@
 
                                 </div>
                                 <div style="padding-top:85px !important"> </div>
                                 <div class="form-legal-item">
                                     <label class="h5">نحوه  آشنایی با سهاد</label>
-                                    <select name="HowMetId" id="HowMetEdit" asp-for="@Model.HowMetId" asp-items="@(new SelectList(ViewBag.HowMets, "Id", "Name"))">
+                                    @*<select name="HowMetId" id="HowMetEdit" asp-for="@Model.HowMetId" asp-items="@(new SelectList(ViewBag.HowMets, "Id", "Name"))">
                                         <option value="0" selected="selected" disabled="disabled">نحوه آشنایی</option>
-                                    </select>
+                                    </select>*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5">استان</label>
-                                    <select name="" asp-for="@Model.City.State.Id" id="drpState" asp-items="@(new SelectList(ViewBag.States, "Id", "Name"))">
+                                    @*<select name="" asp-for="@Model.City.State.Id" id="drpState" asp-items="@(new SelectList(ViewBag.States, "Id", "Name"))">
                                         <option value="0" selected="selected" disabled="disabled">استان</option>
-                                    </select>
+                                    </select>*@
                                 </div>
                                 <div class="form-legal-item">
                                     <label class="h5">شهر</label>
-                                    <select name="CityId" id="drpCity" asp-for="@Model.CityId" asp-items="@(new SelectList(ViewBag.Cities, "Id", "Name"))">
+                                    @*<select name="CityId" id="drpCity" asp-for="@Model.CityId" asp-items="@(new SelectList(ViewBag.Cities, "Id", "Name"))">
                                         <option value="0" selected="selected" disabled="disabled">شهر</option>
-                                    </select>
+                                    </select>*@
                                 </div>
                                 @*<div class="form-legal-item">
                                         <label class="h5" for="code-national">کد ملی</label>
