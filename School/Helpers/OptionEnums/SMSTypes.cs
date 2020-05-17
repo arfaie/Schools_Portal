@@ -3,9 +3,9 @@
 	public enum SmsTypes
 	{
 		Register = 1,
-        StudentRegister = 2,
-        PaymentDone = 3,
-        ResendUserPass = 4,
-        ResetPass=5,
+        ResetPass=2,
+        SchoolPaymentDone = 3,
+        SchoolPreSubmitDone = 4,
+        SchoolRegisterDone = 5,
     }
 }
