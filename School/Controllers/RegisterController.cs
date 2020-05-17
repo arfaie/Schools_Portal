@@ -43,6 +43,8 @@ namespace School.Controllers
 
             //}
 
+            ViewBag.Level = new SelectList(await _context.Levels.ToListAsync(), "Id", "Title");
+
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
             return View();
@@ -78,6 +80,8 @@ namespace School.Controllers
 
                 return RedirectToAction("Index", "Home");
             }
+
+            ViewBag.Level = new SelectList(await _context.Levels.ToListAsync(), "Id", "Title");
 
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
