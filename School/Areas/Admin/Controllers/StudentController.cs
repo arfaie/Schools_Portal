@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using School.Data;
+using School.Models.Helpers;
+using School.Models.Helpers.OptionEnums;
 
 namespace School.Areas.Admin.Controllers
 {
@@ -35,6 +37,19 @@ namespace School.Areas.Admin.Controllers
             }
 
             return PartialView("Accept", student);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Accept(string id,string redirectUrl)
+        {
+            var select = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
+
+            _context.Students.Update(select);
+            await _context.SaveChangesAsync();
+
+            TempData["Notification"] = Notification.ShowNotif(MessageType.Edit, ToastType.Blue);
+            return PartialView("_SuccessfulResponse", "/Admin/Student");
         }
 
         
