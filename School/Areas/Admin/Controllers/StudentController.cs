@@ -23,5 +23,20 @@ namespace School.Areas.Admin.Controllers
         {
             return View(await _context.Students.Include(s => s.EducationTypeFather).Include(s => s.EducationTypeMother).ToListAsync());
         }
+
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> Accept(string id)
+        {
+            var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
+            if (student == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return PartialView("Accept", student);
+        }
+
+        
     }
 }

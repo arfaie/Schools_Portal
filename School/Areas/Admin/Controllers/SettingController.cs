@@ -57,19 +57,19 @@ namespace School.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var upload = Path.Combine(_env.WebRootPath.Replace("\\", "/") + Helper.NormalImagePath);
+                var upload = Path.Combine(_env.WebRootPath.Replace("\\", "/") + Helper.LogoPath);
                 foreach (var file in files)
                 {
                     if (file != null && file.Length > 0)
                     {
-                        var filename = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                        var filename = "Logo.Png" + Path.GetExtension(file.FileName);
                         await using (var fs = new FileStream(Path.Combine(upload, filename), FileMode.Create))
                         {
                             await file.CopyToAsync(fs);
                             model.Logo = filename;
                         }
-                        var image = new ImageResizer();
-                        image.Resize(upload + filename, _env.WebRootPath + Helper.ThumbnailImagePath + filename);
+                        //var image = new ImageResizer();
+                        //image.Resize(upload + filename, _env.WebRootPath + Helper.LogoPath + filename);
                     }
                 }
 
