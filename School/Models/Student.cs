@@ -28,7 +28,7 @@ namespace School.Models
         [Display(Name = "محل صدور شناسنامه")]
         public string IdentityCardPlace { get; set; }
 
-        [Display(Name = "چپ دست")]
+        [Display(Name = "چپ دست؟")]
         public bool RightOrLeft { get; set; }
 
         [Display(Name = "نام مدرسه سال قبل")]

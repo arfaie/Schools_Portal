@@ -21,177 +21,174 @@
             <p class="title-bar-description">The MD form control component presented below was made based on specifications page of Material Design. We have also created a plugin in order to have full functionality.</p>
         </div>*@
     <div class="row">
-        <div class="col-lg-5">
-            <div class="col-sm-6 col-sm-offset-1">
+        <div class="col-lg-4">
+            <div class="col-sm-10 col-sm-offset-1">
                 <div class="demo-md-form-wrapper">
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
-                    </div>
-                    <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
-                    </div>
-                    <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
+                        <input readonly="readonly" asp-for="FirstName" class="md-form-control" type="text">
+                        <label asp-for="FirstName" class="md-control-label"></label>
                     </div>
 
-                </div>
-                @*<h4>
-                    Disabled &amp; focused
-                    <small>Text field can show that it is disabled or focused.</small>
-                </h4>*@
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-label-floating has-value is-disabled">
-                        <input class="md-form-control" type="email" value="teddy.wilson@elephant.theme" disabled="disabled">
-                        <label class="md-control-label">Enter your email</label>
-                    </div>
-                    <div class="md-form-group md-label-floating has-value is-focused">
-                        <input class="md-form-control" type="email" value="teddy.wilson@elephant.theme">
-                        <label class="md-control-label">Enter your email</label>
-                    </div>
-                </div>*@
-                @*<h4>
-                    Sizes
-                    <small>Text field can vary in size.</small>
-                </h4>*@
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-form-group-sm md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with small size</label>
-                    </div>
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with default size</label>
+                        <input readonly="readonly" asp-for="BtirhPlace" class="md-form-control" type="text">
+                        <label asp-for="BtirhPlace" class="md-control-label"></label>
                     </div>
-                    <div class="md-form-group md-form-group-lg md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with large size</label>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="LastYearAvreage" class="md-form-control" type="text">
+                        <label asp-for="LastYearAvreage" class="md-control-label"></label>
                     </div>
-                </div>*@
-                @*<h4>
-                    Help text
-                    <small>Helper text should appear below the text field.</small>
-                </h4>*@
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-label-floating has-value">
-                        <input class="md-form-control" type="password" value="test.1234">
-                        <label class="md-control-label">Password</label>
-                        <small class="md-help-block">8-character minimum; case sensitive.</small>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="FatherJob" class="md-form-control" type="text">
+                        <label asp-for="FatherJob" class="md-control-label"></label>
                     </div>
-                    <div class="md-form-group md-label-floating has-value">
-                        <textarea class="md-form-control" rows="3" maxlength="512">You look like toad...hi hi hi</textarea>
-                        <label class="md-control-label">Comment</label>
-                        <small class="md-help-block">The maximum length of your comment is 512 characters.</small>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="EducationTypeMother.Title" class="md-form-control" type="text">
+                        <label asp-for="IdMotherEdu" class="md-control-label"></label>
                     </div>
-                </div>*@
-                @*<h4>
-                    States
-                    <small>Validation styles for error, warning, and success states.</small>
-                </h4>*@
-                @*<div class="md-form-group md-label-floating has-value has-error">
-                    <input class="md-form-control" type="password" value="test">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password needs at least one number.</small>
-                </div>*@
-                @*<div class="md-form-group md-label-floating has-value has-warning">
-                    <input class="md-form-control" type="password" value="testtest">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password is weak. Try a mix of letters, numbers, and symbols.</small>
-                </div>*@
-                @*<div class="md-form-group md-label-floating has-value has-success">
-                    <input class="md-form-control" type="password" value="test.1234">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password is strong.</small>
-                </div>*@
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="FatherJobTell" class="md-form-control" type="text">
+                        <label asp-for="FatherJobTell" class="md-control-label"></label>
+                    </div>
+
+
+
+                </div>
             </div>
         </div>
-        <div class="col-lg-5">
-            <div class="col-sm-6 col-sm-offset-1">
+        <div class="col-lg-4">
+            <div class="col-sm-10 col-sm-offset-1">
                 <div class="demo-md-form-wrapper">
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
+                        <input readonly="readonly" asp-for="LastName" class="md-form-control" type="text">
+                        <label asp-for="LastName" class="md-control-label"></label>
                     </div>
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
+                        <input readonly="readonly" asp-for="IdentityCardPlace" class="md-form-control" type="text">
+                        <label asp-for="IdentityCardPlace" class="md-control-label"></label>
                     </div>
+
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with floating label</label>
+                        @if (Model.RightOrLeft)
+                        {
+                            <input readonly="readonly" value="بله" class="md-form-control" type="text">
+                        }
+                        else
+                        {
+                            <input readonly="readonly" value="خیر" class="md-form-control" type="text">
+                        }
+                        <label asp-for="BtirhPlace" class="md-control-label"></label>
                     </div>
-                    @*<div class="md-form-group md-label-static">
-            <input class="md-form-control" type="text">
-            <label class="md-control-label">Text field with static label</label>
-        </div>*@
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="MotherJob" class="md-form-control" type="text">
+                        <label asp-for="MotherJob" class="md-control-label"></label>
+                    </div>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="EducationTypeFather.Title" class="md-form-control" type="text">
+                        <label asp-for="IdFatherEdu" class="md-control-label"></label>
+                    </div>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="FatherMobile" class="md-form-control" type="text">
+                        <label asp-for="FatherMobile" class="md-control-label"></label>
+                    </div>
 
                 </div>
-               
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-label-floating has-value is-disabled">
-                        <input class="md-form-control" type="email" value="teddy.wilson@elephant.theme" disabled="disabled">
-                        <label class="md-control-label">Enter your email</label>
-                    </div>
-                    <div class="md-form-group md-label-floating has-value is-focused">
-                        <input class="md-form-control" type="email" value="teddy.wilson@elephant.theme">
-                        <label class="md-control-label">Enter your email</label>
-                    </div>
-                </div>*@
-                @*<h4>
-                    Sizes
-                    <small>Text field can vary in size.</small>
-                </h4>*@
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-form-group-sm md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with small size</label>
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="demo-md-form-wrapper">
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="FatherName" class="md-form-control" type="text">
+                        <label asp-for="FatherName" class="md-control-label"></label>
                     </div>
                     <div class="md-form-group md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with default size</label>
+                        <input readonly="readonly" asp-for="OldSchool" class="md-form-control" type="text">
+                        <label asp-for="OldSchool" class="md-control-label"></label>
                     </div>
-                    <div class="md-form-group md-form-group-lg md-label-floating">
-                        <input class="md-form-control" type="text">
-                        <label class="md-control-label">Text field with large size</label>
+                    <div class="md-form-group md-label-floating">
+                        @if (Model.IsDivorced)
+                        {
+                            <input readonly="readonly" value="بله" class="md-form-control" type="text">
+                        }
+                        else
+                        {
+                            <input readonly="readonly" value="خیر" class="md-form-control" type="text">
+                        }
+                        <label asp-for="IsDivorced" class="md-control-label"></label>
                     </div>
-                </div>*@
-                @*<h4>
-                    Help text
-                    <small>Helper text should appear below the text field.</small>
-                </h4>*@
-                @*<div class="demo-md-form-wrapper">
-                    <div class="md-form-group md-label-floating has-value">
-                        <input class="md-form-control" type="password" value="test.1234">
-                        <label class="md-control-label">Password</label>
-                        <small class="md-help-block">8-character minimum; case sensitive.</small>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="Phone" class="md-form-control" type="text">
+                        <label asp-for="Phone" class="md-control-label"></label>
                     </div>
-                    <div class="md-form-group md-label-floating has-value">
-                        <textarea class="md-form-control" rows="3" maxlength="512">You look like toad...hi hi hi</textarea>
-                        <label class="md-control-label">Comment</label>
-                        <small class="md-help-block">The maximum length of your comment is 512 characters.</small>
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="MotherJobTell" class="md-form-control" type="text">
+                        <label asp-for="MotherJobTell" class="md-control-label"></label>
                     </div>
-                </div>*@
-                @*<h4>
-                    States
-                    <small>Validation styles for error, warning, and success states.</small>
-                </h4>*@
-                @*<div class="md-form-group md-label-floating has-value has-error">
-                    <input class="md-form-control" type="password" value="test">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password needs at least one number.</small>
-                </div>*@
-                @*<div class="md-form-group md-label-floating has-value has-warning">
-                    <input class="md-form-control" type="password" value="testtest">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password is weak. Try a mix of letters, numbers, and symbols.</small>
-                </div>*@
-                @*<div class="md-form-group md-label-floating has-value has-success">
-                    <input class="md-form-control" type="password" value="test.1234">
-                    <label class="md-control-label">Password</label>
-                    <small class="md-help-block">Your password is strong.</small>
-                </div>*@
+
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="MotherMobile" class="md-form-control" type="text">
+                        <label asp-for="MotherMobile" class="md-control-label"></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="demo-md-form-wrapper">
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="FatherJobAddress" class="md-form-control" type="text">
+                        <label asp-for="FatherJobAddress" class="md-control-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="demo-md-form-wrapper">
+                    <div class="md-form-group md-label-floating">
+                        <input readonly="readonly" asp-for="MotherJobAddress" class="md-form-control" type="text">
+                        <label asp-for="MotherJobAddress" class="md-control-label"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="demo-md-form-wrapper">
+                    <div class="col-xs-6 col-md-6">
+                        <a class="btn btn-success marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
+                           data-target="#modal-action">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            تایید ثبت نام دانش آموز
+                        </a>
+                        <a class="btn btn-primary marginbutoom" id="showBrand" data-toggle="modal" asp-action="AddEdit"
+                           data-target="#modal-action">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            بازگشت
+                        </a>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>

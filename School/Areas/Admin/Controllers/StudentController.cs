@@ -28,7 +28,7 @@ namespace School.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Accept(string id)
         {
-            var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
+            var student = await _context.Students.Include(s => s.EducationTypeFather).Include(s => s.EducationTypeMother).FirstOrDefaultAsync(s => s.Id == id);
             if (student == null)
             {
                 return RedirectToAction("Index");
