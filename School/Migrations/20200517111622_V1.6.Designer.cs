@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using School.Data;
 
 namespace School.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200517111622_V1.6")]
+    partial class V16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -431,62 +433,62 @@ namespace School.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f01",
+                            Id = "afde4ad493d2eb181cb87f9a",
                             Title = "اول"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f02",
+                            Id = "458813190d896a4dd601ae18",
                             Title = "دوم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f03",
+                            Id = "7a7c4e6aade4c0a7636508ae",
                             Title = "سوم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f04",
+                            Id = "239443dfa6a286607d777e71",
                             Title = "چهارم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f05",
+                            Id = "1c76d0b4dde0e7a116273075",
                             Title = "پنجم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f06",
+                            Id = "56b04a2c864e3706727f7d41",
                             Title = "ششم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f07",
+                            Id = "72d54246a837967a52bfe5ad",
                             Title = "هفتم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f08",
+                            Id = "738e40ca96f4308399678ab5",
                             Title = "هشتم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f09",
+                            Id = "02e1122fc0d3a65db4cdc514",
                             Title = "نهم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f10",
+                            Id = "cfd14d118be838a685e20e3e",
                             Title = "دهم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f11",
+                            Id = "096a4bff94237b95c131ee9d",
                             Title = "یازدهم"
                         },
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f12",
+                            Id = "4d414cba8d6965cc0a482381",
                             Title = "دوازدهم"
                         });
                 });

@@ -96,6 +96,9 @@ namespace School.Models
         [ForeignKey("LevelId")]
         public virtual Level Level { get; set; }
 
+        [Display(Name = "کد ثیت نام")]
+        public int RegisterCode { get; set; }
+
 
 
 
