@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using School.Helpers
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="Logout" id="logoutForm" class="navbar-right">
+        <button class="btn-login"><span class="mdi mdi-logout"></span>خروج از حساب کاربری</button>
+
+        @*<ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                </li>
+                <li>
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Log out</button>
+                </li>
+            </ul>*@
+    </form>
+
+    <button onclick="Profileinter()" class="btn-login" style="width: 130px;"><span class="mdi mdi-account"></span>حساب کاربری</button>
+
+    <script type="text/javascript">
+        function Profileinter() {
+            document.location = '@Url.Action("Index","UserProfile")';
+        }
+    </script>
+
+    <div class="responsive-header-left">
+        <a asp-controller="UserProfile" asp-action="Index"><button class="btn-login-responsive"><span class="mdi mdi-account-outline"></span></button></a>
+
+        <div class="mini-cart-header-responsive">
+            <a asp-controller="Payment" asp-action="Cart" style="color: #4a5f73;">
+                @if (Context.Session != null && Context.Session.Keys.Contains("CartItems"))
+                {
+                    var count = Context.Session.GetComplexData<List<string>>("CartItems").Count;
+                    if (count > 0)
+                    {
+                        <span id="cartIcon" class="mdi mdi-cart"><span class="badge badge-pill badge-danger">@count</span></span>
+                    }
+                    else
+                    {
+                        <span id="cartIcon" class="mdi mdi-cart"></span>
+                    }
+                }
+                else
+                {
+                    <span id="cartIcon" class="mdi mdi-cart"></span>
+                }
+            </a>
+        </div>
+
+        @*<button class="question-faq"><span class="fa fa-question-circle-o"></span></button>*@
+    </div>
+
+}
+else
+{
+    <a asp-controller="Account" asp-action="Login"><button class="btn-login"><span class="mdi mdi-account-outline"></span>ورود به حساب کاربری</button></a>
+
+    <div class="responsive-header-left">
+        <a asp-controller="Account" asp-action="Login"><button class="btn-login-responsive"><span class="mdi mdi-account-outline"></span></button></a>
+
+        <div class="mini-cart-header-responsive">
+            <a asp-controller="Account" asp-action="Login"><span class="mdi mdi-cart"></span></a>
+        </div>
+
+        @*<button class="question-faq"><span class="fa fa-question-circle-o"></span></button>*@
+    </div>
+}
