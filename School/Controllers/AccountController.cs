@@ -168,7 +168,7 @@ namespace School.Controllers
 
                     if (userRole.Contains("Admin"))
                     {
-                        return RedirectToAction("Index", "User", new { Area = "Admin" });
+                        return RedirectToAction("Index", "Gallery", new { Area = "Admin" });
                     }
 
                     return RedirectToAction("Index", "Home");
@@ -369,5 +369,12 @@ namespace School.Controllers
         }
 
         #endregion Helpers
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

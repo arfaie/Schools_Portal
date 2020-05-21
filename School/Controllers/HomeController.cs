@@ -24,6 +24,8 @@ namespace School.Controllers
 
         public IActionResult Index()
         {
+            string SchoolName = _context.Settings.FirstOrDefault().SchoolName;
+            ViewBag.SchoolName = SchoolName;
             return View();
         }
 

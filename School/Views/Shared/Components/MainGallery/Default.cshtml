@@ -2,15 +2,16 @@
 @model IEnumerable<Gallery>
 
 <div class="row">
+
     <div class="col-md-12 col-sm-12 col-xs-12">
+
+
         <div class="portfolio-carousel">
 
-            <!-- Single Portfolio -->
-            @{
-                foreach (var item in Model)
-                {
-                    <div class="portfolio-single">
-                        <a href="#" class="zoom">
+
+                @foreach (var item in Model)
+                {<div class="portfolio-single">
+                        <a href="@Helper.NormalImagePath@item.Image" class="zoom">
                             <div class="portfolio-head">
                                 <img src="@Helper.NormalImagePath@item.Image" alt="">
                                 <i class="fa fa-search"></i>
@@ -18,9 +19,9 @@
                         </a>
                     </div>
                 }
-            }
-            <!--/ End Portfolio -->
+
 
         </div>
     </div>
 </div>
+

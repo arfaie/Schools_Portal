@@ -115,210 +115,7 @@
                     <div class="custom-scrollbar">
                         <nav id="sidenav" class="sidenav-collapse collapse">
                             <ul class="sidenav">
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت محصولات</li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Product" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">محصولات</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Unit" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">واحدها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Brand" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">برندها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="CategoryGroup" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label"> گروه دسته بندی</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Category" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label"> دسته بندی</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="FieldGroup" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">گروه فیلدها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Field" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label"> فیلد ها </span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت تخفیف ها</li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Offer" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">تخفیف ها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="OfferItem" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">آیتم های تخفیف </span>
-                                    </a>
-                                </li>
-
-
-                                @*<li class="sidenav-item">
-                                        <a asp-area="Admin" asp-controller="Agency" asp-action="Index">
-                                            <span class="sidenav-icon icon icon-th"></span>
-                                            <span class="sidenav-label">آژانس ها</span>
-                                        </a>
-                                    </li>*@
-                                @*<li class="sidenav-item">
-                                        <a asp-area="Admin" asp-controller="ApplicationRole" asp-action="Index">
-                                            <span class="sidenav-icon icon icon-th"></span>
-                                            <span class="sidenav-label">نقش ها</span>
-                                        </a>
-                                    </li>*@
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت خودرو ها</li>
-
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Maker" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label"> نوع خودروها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Car" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label"> مدل خودروها</span>
-                                    </a>
-                                </li>
-
-
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت شهرها</li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="State" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">استان ها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="City" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">شهر ها</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت کاربران</li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="User" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">کاربران</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="UserGroup" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">گروه کاربران</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="CommentAndStar" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">نظرات کاربران</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Address" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">آدرسهای کاربران</span>
-                                    </a>
-                                </li>
-
-
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت سفارشها</li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Order" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">سفارشات</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Status" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">وضعیتهای سفارشها</span>
-                                    </a>
-                                </li>
-
-
-
-                                @*<li class="sidenav-item">
-                                        <a asp-area="Admin" asp-controller="CommentAndStar" asp-action="Index">
-                                            <span class="sidenav-icon icon icon-th"></span>
-                                            <span class="sidenav-label">کامنت ها</span>
-                                        </a>
-                                    </li>*@
-
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت بلاگ</li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="News" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">بلاگ</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="NewsCategory" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">دسته بندی بلاگ </span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Tag" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">تگ ها</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="NewsTags" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">تگ های بلاگ</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت سایت</li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Slider" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">گالری اسلاید</span>
-                                    </a>
-                                </li>
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Email" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">ایمیل های دریافتی</span>
-                                    </a>
-                                </li>
-
-                                <li class="sidenav-item">
-                                    <a asp-area="Admin" asp-controller="Question" asp-action="Index">
-                                        <span class="sidenav-icon icon icon-th"></span>
-                                        <span class="sidenav-label">پرسش و پاسخ های متداول</span>
-                                    </a>
-                                </li>
+                                <li class="sidenav-heading sideMenueHeaderColor"> مدیریت وبسایت</li>
 
                                 <li class="sidenav-item">
                                     <a asp-area="Admin" asp-controller="AboutUs" asp-action="Index">
@@ -326,6 +123,39 @@
                                         <span class="sidenav-label">درباره ما</span>
                                     </a>
                                 </li>
+                                <li class="sidenav-item">
+                                    <a asp-area="Admin" asp-controller="ContactUs" asp-action="Index">
+                                        <span class="sidenav-icon icon icon-th"></span>
+                                        <span class="sidenav-label">ارتباط با ما</span>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a asp-area="Admin" asp-controller="Gallery" asp-action="Index">
+                                        <span class="sidenav-icon icon icon-th"></span>
+                                        <span class="sidenav-label">گالری تصاویر</span>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a asp-area="Admin" asp-controller="Services" asp-action="Index">
+                                        <span class="sidenav-icon icon icon-th"></span>
+                                        <span class="sidenav-label"> سرویس ها</span>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a asp-area="Admin" asp-controller="Setting" asp-action="Index">
+                                        <span class="sidenav-icon icon icon-th"></span>
+                                        <span class="sidenav-label">تنظیمات</span>
+                                    </a>
+                                </li>
+                                <li class="sidenav-item">
+                                    <a asp-area="Admin" asp-controller="Slider" asp-action="Index">
+                                        <span class="sidenav-icon icon icon-th"></span>
+                                        <span class="sidenav-label">اسلایدر</span>
+                                    </a>
+                                </li>
+                                
+
+                                
 
                             </ul>
                         </nav>
@@ -340,7 +170,7 @@
             <div class="layout-footer">
 
                 <div class="layout-footer-body">
-                    <small class="version" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:larger">Carbiotic 2020</small>
+                    <small class="version" style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;font-size:larger">Sahad 2020</small>
                 </div>
             </div>
         </div>

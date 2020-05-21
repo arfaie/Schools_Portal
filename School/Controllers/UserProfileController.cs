@@ -267,9 +267,13 @@ namespace School.Controllers
         public async Task<IActionResult> userOrders()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-
-            ViewBag.UserFullName = user.FullName;
-            ViewBag.UserMobile = user.PhoneNumber;
+            var student = _context.Students.Where(x => x.IdUser == user.Id).FirstOrDefault();
+            if (student != null)
+            {
+                ViewBag.UserFullName = student.FirstName + " " + student.LastName;
+                ViewBag.UserMobile = student.FatherMobile;
+            }
+            
 
             return View(await _context.Payments.Where(o => o.Factor.IdUser == user.Id).Include(o => o.Factor).OrderByDescending(x => x.TransactionDate).ToListAsync());
         }

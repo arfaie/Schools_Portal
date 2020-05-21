@@ -2,15 +2,15 @@
 @model Student
 
 @{
-    ViewData["Title"] = "کاربری";
+    ViewData["Title"] = "پروفایل";
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
 @{
-    string FName = Model.FirstName == "" ? "-" : Model.FirstName;
-    string LName = Model.LastName == "" ? "-" : Model.LastName;
-    string FatherMobile = Model.FatherMobile == "" ? "-" : Model.FatherMobile;
-    string Phone = Model.Phone == "" ? "-" : Model.Phone;
+    string FName = Model.FirstName == ""||Model.FirstName ==null ? "-" : Model.FirstName;
+    string LName = Model.LastName == ""||Model.FirstName ==null ? "-" : Model.LastName;
+    string FatherMobile = Model.FatherMobile == ""||Model.FirstName ==null ? "-" : Model.FatherMobile;
+    string Phone = Model.Phone == ""||Model.FirstName ==null ? "-" : Model.Phone;
     //ViewBag.UserFullName = fullName;
     //ViewBag.UserMobile = Mobile;
 
@@ -22,7 +22,7 @@
 <div class="col-lg-9 col-md-8 col-xs-12 pull-right">
     <div class="col-lg-12 col-xs-12 pull-right">
         <div class="headline-profile">
-            <span>پروفایل کاربری</span>
+            <span>پروفایل دانش آموز</span>
         </div>
         <div class="profile-stats">
             <div class="profile-stats-row">
