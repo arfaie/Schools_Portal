@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,12 +22,14 @@ namespace School.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly ISmsSender _smsSender;
+        private readonly IWebHostEnvironment _env;
 
-        public RegisterController(UserManager<ApplicationUser> userManager, ApplicationDbContext context, ISmsSender smsSender)
+        public RegisterController(UserManager<ApplicationUser> userManager, ApplicationDbContext context, ISmsSender smsSender, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _context = context;
             _smsSender = smsSender;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -41,7 +45,7 @@ namespace School.Controllers
             {
                 return RedirectToAction("Roles", "Home");
             }
-            
+
 
             string SchoolName = _context.Settings.FirstOrDefault().SchoolName;
             ViewBag.SchoolName = SchoolName;
@@ -56,10 +60,38 @@ namespace School.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegisterStudent(Student model)
+        public async Task<IActionResult> RegisterStudent(Student model, IFormFile files, IFormFile files2)
         {
             if (ModelState.IsValid)
             {
+
+                var upload = Path.Combine(_env.WebRootPath.Replace("\\", "/") + Helper.NormalImagePath);
+               
+                    if (files != null && files.Length > 0)
+                    {
+                        var filename = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(files.FileName);
+                        await using (var fs = new FileStream(Path.Combine(upload, filename), FileMode.Create))
+                        {
+                            await files.CopyToAsync(fs);
+                            model.reportImage = filename;
+                        }
+                        var image = new ImageResizer();
+                        image.Resize(upload + filename, _env.WebRootPath + Helper.ThumbnailImagePath + filename);
+                    }
+
+                    if (files2 != null && files2.Length > 0)
+                    {
+                        var filename = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(files2.FileName);
+                        await using (var fs = new FileStream(Path.Combine(upload, filename), FileMode.Create))
+                        {
+                            await files2.CopyToAsync(fs);
+                            model.nationalCodeImage = filename;
+                        }
+                        var image = new ImageResizer();
+                        image.Resize(upload + filename, _env.WebRootPath + Helper.ThumbnailImagePath + filename);
+                    }
+
+
                 var user = await _userManager.GetUserAsync(HttpContext.User);
 
                 if (user == null)
@@ -94,7 +126,8 @@ namespace School.Controllers
 
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
-            return View("Index", model);
+            return View("Index");
         }
+
     }
 }
