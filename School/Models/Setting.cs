@@ -20,6 +20,9 @@ namespace School.Models
         public string Logo { get; set; }
 
         [Display(Name = "نام مدرسه")]
-        public string SchoolName { get; private set; }
+        public string SchoolName { get; set; }
+
+        [Display(Name = "مرچنت کد")]
+        public string MerchentCode { get; set; }
     }
 }

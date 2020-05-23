@@ -52,6 +52,8 @@
                                 <th>کد</th>
                                 <th>@Html.DisplayNameFor(model => model.Logo)</th>
                                 <th>@Html.DisplayNameFor(model => model.GalleryDes)</th>
+                                <th>@Html.DisplayNameFor(model => model.SchoolName)</th>
+                                <th>@Html.DisplayNameFor(model => model.MerchentCode)</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
@@ -64,6 +66,9 @@
                                         <img src="@ViewBag.Path@Model.Logo"/>
                                     </td>
                                     <td>@Model.GalleryDes</td>
+                                    <td>@Model.SchoolName</td>
+                                    <td>@Model.MerchentCode</td>
+
 
 
                                     <td>
@@ -113,7 +118,7 @@
                 data.append('files', files[i])
 
             }
-            $('input,select').each(function (x, y) {
+            $('input').each(function (x, y) {
                 data.append($(y).attr('name'), $(y).val());
 
             });
