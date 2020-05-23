@@ -21,5 +21,8 @@ namespace School.Models
 
         [Display(Name = "نام مدرسه")]
         public string SchoolName { get; private set; }
+
+        [Display(Name = "مرچنت کد")]
+        public string MerchentCode { get; private set; }
     }
 }
