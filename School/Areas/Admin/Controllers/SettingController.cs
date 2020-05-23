@@ -62,7 +62,7 @@ namespace School.Areas.Admin.Controllers
                 {
                     if (file != null && file.Length > 0)
                     {
-                        var filename = "Logo.Png" + Path.GetExtension(file.FileName);
+                        var filename = "Logo" + Path.GetExtension(file.FileName);
                         await using (var fs = new FileStream(Path.Combine(upload, filename), FileMode.Create))
                         {
                             await file.CopyToAsync(fs);

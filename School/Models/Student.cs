@@ -99,6 +99,12 @@ namespace School.Models
         [Display(Name = "کد ثیت نام")]
         public int RegisterCode { get; set; }
 
+        [Display(Name = "عکس کارنامه سال قبل")]
+        public string reportImage { get; set; }
+
+        [Display(Name = "عکس شناسنامه")]
+        public string nationalCodeImage { get; set; }
+
 
 
 
