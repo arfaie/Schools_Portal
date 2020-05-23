@@ -137,6 +137,10 @@ namespace School.Controllers
             // Clear the existing external cookie to ensure a clean login process
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("Index", "UserProfile");
+            }
             if (TempData["StatusMessage"] != null)
             {
                 TempData["Notification"] = Notification.ShowNotif(MessageType.Add, ToastType.Green);
@@ -375,6 +379,14 @@ namespace School.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

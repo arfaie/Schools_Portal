@@ -282,6 +282,9 @@ namespace School.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasDefaultValueSql("NEWID()");
 
+                    b.Property<string>("Des")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("IdYear")
                         .HasColumnType("nvarchar(450)");
 
@@ -491,6 +494,39 @@ namespace School.Migrations
                         });
                 });
 
+            modelBuilder.Entity("School.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FactorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TransactionNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TransactionStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FactorId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Orders");
+                });
+
             modelBuilder.Entity("School.Models.Payment", b =>
                 {
                     b.Property<string>("Id")
@@ -614,6 +650,21 @@ namespace School.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("School.Models.Status", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("School.Models.Student", b =>
@@ -798,8 +849,19 @@ namespace School.Migrations
                         .HasForeignKey("CostId");
 
                     b.HasOne("School.Models.Factor", "Factor")
+                        .WithMany("FactorItems")
+                        .HasForeignKey("FactorId");
+                });
+
+            modelBuilder.Entity("School.Models.Order", b =>
+                {
+                    b.HasOne("School.Models.Factor", "Factor")
                         .WithMany()
                         .HasForeignKey("FactorId");
+
+                    b.HasOne("School.Models.Status", "Status")
+                        .WithMany("Orders")
+                        .HasForeignKey("StatusId");
                 });
 
             modelBuilder.Entity("School.Models.Payment", b =>

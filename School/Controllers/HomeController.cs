@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -41,9 +42,10 @@ namespace School.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Roles()
+        public IActionResult Roles()
         {
-            var select = await _context.Roles.FirstOrDefaultAsync();
+            ViewBag.checkbox = "text-info";
+            var select = _context.Roles;
 
             ViewBag.checkbox = "";
 
@@ -51,10 +53,11 @@ namespace School.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Roles(int acceptedrole)
+        public IActionResult Roles(int acceptedrole)
         {
             if (acceptedrole == 1)
             {
+                HttpContext.Session.SetInt32("acceptedrole",1);
                 ViewBag.checkbox = "";
 
                 return RedirectToAction("Index", "Register");
@@ -62,7 +65,7 @@ namespace School.Controllers
 
             ViewBag.checkbox = "text-danger";
 
-            var select = await _context.Roles.FirstOrDefaultAsync();
+            var select = _context.Roles;
 
             return View(select);
         }

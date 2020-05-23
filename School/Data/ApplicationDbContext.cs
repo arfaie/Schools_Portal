@@ -30,9 +30,8 @@ namespace School.Data
         public DbSet<FactorItem> FactorItems { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Level> Levels { get; set; }
-
-
-
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Status> Statuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -62,7 +61,12 @@ namespace School.Data
             addLevel(builder);
 
         }
-
+        private static void addYear(ModelBuilder builder)
+        {
+            builder.Entity<EducationType>().HasData(
+                new EducationType { Id = "2f9c65d681937c32qwecec01", Title = "سالتحصیلی 1399-1400" }
+            );
+        }
         private static void addEducationType(ModelBuilder builder)
         {
             builder.Entity<EducationType>().HasData(

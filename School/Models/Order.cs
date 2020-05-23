@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace School.Models
 {
-    public class Payment
+    public class Order
     {
         [Display(Name = "شناسه")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,16 +16,25 @@ namespace School.Models
         [Display(Name = "فاکتور")]
         public string FactorId { get; set; }
 
-        [ForeignKey("FactorId")]
+        [Display(Name = "فاکتور")]
         public virtual Factor Factor { get; set; }
 
-        [Display(Name = "تاریخ تراکنش")]
-        public DateTime TransactionDate { get; set; }
+        [Display(Name = "شماره تراکنش")]
+        public string TransactionNumber { get; set; }
 
         [Display(Name = "وضعیت تراکنش")]
         public bool TransactionStatus { get; set; }
 
-        [Display(Name = "شماره تراکنش")]
-        public string TransactionNumber { get; set; }
+        [Display(Name = "تاریخ تراکنش")]
+        public DateTime TransactionDate { get; set; }
+
+        [Display(Name = "وضعیت")]
+        public string StatusId { get; set; }
+
+        [Display(Name = "وضعیت")]
+        public virtual Status Status { get; set; }
+
+        [Display(Name = "توضیحات")]
+        public string Description { get; set; }
     }
 }

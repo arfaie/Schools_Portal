@@ -7,25 +7,16 @@ using System.Threading.Tasks;
 
 namespace School.Models
 {
-    public class Cost
+    public class Status
     {
         [Display(Name = "شناسه")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
 
-        public string IdYear { get; set; }
-
-        [ForeignKey("IdYear")]
-        public virtual Year Year { get; set; }
-
         [Display(Name = "عنوان")]
+        [Required(ErrorMessage = "فیلد {0} نمی تواند خالی باشد.")]
         public string Title { get; set; }
 
-        [Display(Name = "شهریه")]
-        public int Value { get; set; }
-
-        [Display(Name = "توضیحات")]
-        public string Des { get; set; }
-
+        public ICollection<Order> Orders { get; set; }
     }
 }

@@ -1,0 +1,262 @@
+﻿@model Factor
+@using School.Helpers
+@{
+    ViewBag.Title = "بازبینی خرید";
+        Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<!--shopping--------------------->
+<header class="shopping-page">
+    <div class="container">
+        <div class="header-shopping-logo">
+            <a asp-controller="Home" asp-action="Index" class="logo-account"><img src="~/images/Logo/Logo.png"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <ul class="checkout-steps">
+                <li class="is-completed">
+                    <a href="#" class="checkout-steps-item-link active-link-shopping">
+                        <span>@ViewBag.Title</span>
+                    </a>
+                </li>
+                <li class="is-completed">
+                    <a href="#" class="checkout-steps-item active-link">
+                        <span>پرداخت</span>
+                    </a>
+                </li>
+                <li class="is-active">
+                    <a href="#" class="checkout-steps-item active-link">
+                        <span>اتمام خرید و ارسال</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="main-shopping">
+    <div class="content-shopping">
+        <div class="col-lg-8 col-md-8 col-xs-12 pull-right">
+            <div class="shipment-page-container">
+                <div class="headline-checkout-shopping">
+                    @*<span>انتخاب آدرس تحویل سفارش</span>*@
+                    <span>بازبینی نهایی پرداخت شهریه</span>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+                <div id="address-section">
+                    <div class="checkout-contact">
+
+                    </div>
+                </div>
+            </div>
+            <form action="#" id="shipping-data-form">
+                <div class="normal-delivery">
+                    
+                </div>
+            </form>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-xs-12 pull-left">
+            <div class="page-aside" style="margin-top: 95px;">
+                <div class="checkout-summary">
+                    <ul class="checkout-summary-summary">
+                        <li>
+                            <span>مبلغ کل (@Model.FactorItems.Count آیتم)</span>
+                            <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
+                        </li>
+                        <li>
+                            <span>جمع</span>
+                            <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
+                        </li>
+
+                        <li>
+                            <span>مبلغ قابل پرداخت</span>
+                            <span id="finalPrice">@($"{Model.FactorItems?.Sum(x => x.Price) /*+ Model.ShippingCost:N0*/}") تومان</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="checkout-summary-content">
+                    <p>آیتم های موجود در فرایند پرداخت شهریه شما ثبت و رزرو نشده‌اند، برای ادامه ثبت نام مراحل بعدی را تکمیل کنید.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-8 col-md-8 col-xs-12 pull-right">
+            <div class="checkout-to-shipping-sticky">
+                <form asp-controller="Payment" asp-action="PaymentCheckout">
+                    <input type="hidden" asp-for="Id" class="form-control" />
+
+                    
+                    <input type="submit" class="selenium-next-step-shipping" value="ادامه فرآیند " />
+                </form>
+                <div class="checkout-to-shipping-price-report">
+                    <p>مبلغ قابل پرداخت</p>
+                    <div class="cart-item-product-price">
+                        @($"{Model.FactorItems?.Sum(x => x.Price) /*+ Model.ShippingCost:N0*/}") تومان
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkout-actions">
+            <a asp-controller="Payment" asp-action="Cart" class="btn-link-spoiler">
+                « بازگشت به صفحه قبل
+            </a>
+            @*<a href="shopping-payment.html" class="save-shipping-data">
+                    تایید و ادامه ثبت سفارش »
+                </a>*@
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+
+<!--shopping--------------------->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+    <script>
+
+        $(document).ready(function () {
+
+            var cities = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.Cities))');
+
+            $("#provinceAdd").change(function () {
+                var id = $("#provinceAdd").val();
+
+                $("#cityAdd").empty();
+                var items = '<option value="0" selected="selected">شهر مورد نظر خود را انتخاب کنید</option>';
+
+                $.each(cities, function (index, value) {
+                    if (value.StateId === id) {
+                        items += '<option value="' + value.Id + '">' + value.Name + '</option>';
+                    }
+                });
+
+                $("#cityAdd").html(items);
+            });
+
+            $("#provinceEdit").change(function () {
+                var id = $("#provinceEdit").val();
+
+                $("#cityEdit").empty();
+                var items = '<option value="0" selected="selected">شهر مورد نظر خود را انتخاب کنید</option>';
+
+                $.each(cities, function (index, value) {
+                    if (value.StateId === id) {
+                        items += '<option value="' + value.Id + '">' + value.Name + '</option>';
+                    }
+                });
+
+                $("#cityEdit").html(items);
+            });
+
+            $(".edit-address-btn").click(function (e) {
+                e.preventDefault();
+
+                var id = $(this).attr("id").replace("editAddressModal", "");
+
+                $("#idEdit").val(id);
+                $("#nameEdit").val($("#Recipient" + id).val());
+                $("#phone-numberEdit").val($("#Mobile" + id).val());
+                $("#fixed-numberEdit").val($("#Phone" + id).val());
+                $("#postalCodeEdit").val($("#PostalCode" + id).val());
+                $("#addressEdit").val($("#Description" + id).val());
+
+                $("#provinceEdit").val($("#State" + id).val());
+
+                $("#provinceEdit").trigger('change');
+
+                $("#cityEdit").val($("#City" + id).val());
+            });
+
+            $("#addAddressButton").click(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    data: { "recipient": $("#nameAdd").val(), "mobile": $("#phone-numberAdd").val(), "phone": $("#fixed-numberAdd").val(), "postalCode": $("#postalCodeAdd").val(), "description": $("#addressAdd").val(), "city": $("#cityAdd").val()  },
+                    url: '@Url.Action("AddAddress", "UserProfile")',
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+                })
+                .done(function (data) {
+                    location.reload();
+                })
+                .fail(function (xhr, b, error) {
+                    alert(error);
+                })
+                .always(function () {
+                    //alert("OK");
+                });
+
+            });
+
+            $("#editAddressButton").click(function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'POST',
+                    data: { "id": $("#idEdit").val(), "recipient": $("#nameEdit").val(), "mobile": $("#phone-numberEdit").val(), "phone": $("#fixed-numberEdit").val(), "postalCode": $("#postalCodeEdit").val(), "description": $("#addressEdit").val(), "city": $("#cityEdit").val()  },
+                    url: '@Url.Action("EditAddress", "UserProfile")',
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+                })
+                .done(function (data) {
+                    location.reload();
+                })
+                .fail(function (xhr, b, error) {
+                    alert(error);
+                })
+                .always(function () {
+                    //alert("OK");
+                });
+
+            });
+
+            $(".checkout-contact-badge").click(function (e) {
+                e.preventDefault();
+
+                $(".checkout-contact-badge").empty();
+
+                var id = $(this).attr("id").replace("check", "");
+                $("#AddressId").val(id);
+
+                $(this).html('<i class="fa fa-check"></i>');
+
+                //calculate shipping cost
+                $.ajax({
+                    type: 'POST',
+                    data: { "addressId": id, "factorId" : "@Model.Id"  },
+                    url: '@Url.Action("CalculateShippingCost", "Payment")',
+                    dataType: 'json',
+                    contentType: 'application/x-www-form-urlencoded; charset=utf-8'
+                })
+                .done(function (data) {
+
+                    $(".package-shipping-cost").text("هزینه ارسال : " + data.cost.toLocaleString() + " تومان");
+                    $("#package-shipping").text(data.cost.toLocaleString() + " تومان");
+
+                    $(".cart-item-product-price").text((@Model.TotalPrice + data.cost).toLocaleString() + " تومان");
+                    $("#finalPrice").text((@Model.TotalPrice + data.cost).toLocaleString() + " تومان");
+                })
+                .fail(function (xhr, b, error) {
+                    alert(error);
+                })
+                .always(function () {
+                    //alert("OK");
+                });
+
+            });
+
+        });
+
+    </script>
+}

@@ -26,8 +26,8 @@
                     <li><a asp-controller="Home" asp-action="About">درباره ما</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">تماس با ما</a></li>
                 </ul>
-
-                <p class="title-footer">استفاده از مطالب پوناس فقط برای مقاصد غیرتجاری و با ذکر منبع بلامانع است. کلیه حقوق این سایت متعلق به پوناس می‌باشد.</p>
+                
+                @await Component.InvokeAsync("Footer")
 
                 <p class="copy-right-footer-light">Copyright © @DateTime.UtcNow.Year punas.com</p>
             </div>

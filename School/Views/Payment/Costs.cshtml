@@ -1,0 +1,83 @@
+﻿@using School.Helpers;
+@model IEnumerable<Cost>
+
+@{
+    ViewData["Title"] = "انتخاب شهریه";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div>
+    @(await Html.PartialAsync("_UserPanel"))
+</div>
+<div class="col-lg-9 col-md-8 col-xs-12 pull-left">
+    <div class="headline-profile page-profile-order" style="margin-top:140px;">
+        <span>انتخاب شهریه</span>
+    </div>
+    <div class="profile-stats page-profile-order">
+        <div class="table-orders">
+            <table class="table" style="text-align-last: center;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">عنوان شهریه</th>
+                        <th scope="col">مقدار شهریه</th>
+                        <th scope="col">عملیات</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr class="center">
+                                <td>@(i++)</td>
+                                <td class="order-code">@item.Title</td>
+                                <td id="costValue">@item.Value</td>
+                                <td costId="@item.Id" class="btn btn-success" style="color:aliceblue"><a><span>انتخاب</span></a></td>
+                                <td style="display:none" id="@item.Id">@item.Id</td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--        responsive-profile-order------------------------->
+    <!--        responsive-profile-order------------------------->
+</div>
+@section Scripts{
+
+    <script>
+        var id;
+        $('table').find('td').click(function () {
+           id=$(this).attr('costId');
+});
+        $('.btn').on("click", function () {
+
+        var post_data = id;
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("AddToCart","Payment")',
+                    data: { 'costId': post_data },
+                    success: function(msg) {
+                        if (msg.status === 'success') {
+                            //alert(msg.message);
+                            //$("#requestcount").text(msg.count);
+                        } else {
+                            //alert(msg.message);
+                        }
+                        $("#cartIcon").empty();
+                        if (msg.count > 0) {
+                            $("#cartIcon").html('<span id="itemCountBadge" class="badge badge-pill badge-danger">' + msg.count + '</span>');
+                        }
+                        var scriptOption = "<script> iziToast.show({message:'" + msg.message + "'" + ",theme: 'light', color: '2',icon: 'icon icon-check', iconColor: '#1ABC9C' ,messageColor: 'snow',backgroundColor: '#1ABC9C',maxWidth: 500,layout: 2,balloon: false,close: true,closeOnEscape: true,closeOnClick: true,displayMode: 0, position: 'topLeft',targetFirst: true,timeout: 5000,rtl: true,animateInside: true,drag: true,pauseOnHover: true,resetOnHover: false,progressBar: true,progressBarColor: '',progressBarEasing: 'linear',overlay: false,overlayClose: false,overlayColor: 'rgba(0, 0, 0, 0.6)',transitionIn: 'fadeInUp',transitionOut: 'fadeOut',transitionInMobile: 'fadeInUp',transitionOutMobile: 'fadeOutDown' }); <\/script>";
+                            $("#notificationDiv").append(scriptOption);
+                    }
+                });
+            })
+    </script>
+}
+

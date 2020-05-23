@@ -1,0 +1,20 @@
+﻿
+@model Setting
+@{ 
+    var Name = Model.SchoolName;
+    if (Name == "" || Name == null)
+    {
+        Name = "سهاد";
+    }
+}
+    <div class="more-info">
+        <div class="col-12">
+
+            <div class="copy-right-footer">
+                <p>
+                    استفاده از مطالب این سایت فقط برای مقاصد غیرتجاری و با ذکر منبع
+                    بلامانع است. کلیه حقوق این سایت متعلق به (مدرسه @Name) می‌باشد.
+                </p>
+            </div>
+        </div>
+    </div>

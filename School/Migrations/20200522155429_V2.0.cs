@@ -2,21 +2,21 @@
 
 namespace School.Migrations
 {
-    public partial class V13 : Migration
+    public partial class V20 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "SchoolName",
-                table: "Settings",
+                name: "Des",
+                table: "Costs",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "SchoolName",
-                table: "Settings");
+                name: "Des",
+                table: "Costs");
         }
     }
 }

@@ -60,7 +60,7 @@
                         <tbody>
                             @{
                                 var i = 1;
-                                foreach (var item in Model)
+                                foreach (var item in Model.OrderBy(x=>x.IsPreSubmit))
                                 {
 
                                     <tr>

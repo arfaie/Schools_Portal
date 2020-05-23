@@ -10,8 +10,8 @@ using School.Data;
 namespace School.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200517111622_V1.6")]
-    partial class V16
+    [Migration("20200522155429_V2.0")]
+    partial class V20
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -284,6 +284,9 @@ namespace School.Migrations
                         .HasColumnType("nvarchar(450)")
                         .HasDefaultValueSql("NEWID()");
 
+                    b.Property<string>("Des")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("IdYear")
                         .HasColumnType("nvarchar(450)");
 
@@ -433,64 +436,97 @@ namespace School.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "afde4ad493d2eb181cb87f9a",
+                            Id = "afde4ad493d2eb181cb87f01",
                             Title = "اول"
                         },
                         new
                         {
-                            Id = "458813190d896a4dd601ae18",
+                            Id = "afde4ad493d2eb181cb87f02",
                             Title = "دوم"
                         },
                         new
                         {
-                            Id = "7a7c4e6aade4c0a7636508ae",
+                            Id = "afde4ad493d2eb181cb87f03",
                             Title = "سوم"
                         },
                         new
                         {
-                            Id = "239443dfa6a286607d777e71",
+                            Id = "afde4ad493d2eb181cb87f04",
                             Title = "چهارم"
                         },
                         new
                         {
-                            Id = "1c76d0b4dde0e7a116273075",
+                            Id = "afde4ad493d2eb181cb87f05",
                             Title = "پنجم"
                         },
                         new
                         {
-                            Id = "56b04a2c864e3706727f7d41",
+                            Id = "afde4ad493d2eb181cb87f06",
                             Title = "ششم"
                         },
                         new
                         {
-                            Id = "72d54246a837967a52bfe5ad",
+                            Id = "afde4ad493d2eb181cb87f07",
                             Title = "هفتم"
                         },
                         new
                         {
-                            Id = "738e40ca96f4308399678ab5",
+                            Id = "afde4ad493d2eb181cb87f08",
                             Title = "هشتم"
                         },
                         new
                         {
-                            Id = "02e1122fc0d3a65db4cdc514",
+                            Id = "afde4ad493d2eb181cb87f09",
                             Title = "نهم"
                         },
                         new
                         {
-                            Id = "cfd14d118be838a685e20e3e",
+                            Id = "afde4ad493d2eb181cb87f10",
                             Title = "دهم"
                         },
                         new
                         {
-                            Id = "096a4bff94237b95c131ee9d",
+                            Id = "afde4ad493d2eb181cb87f11",
                             Title = "یازدهم"
                         },
                         new
                         {
-                            Id = "4d414cba8d6965cc0a482381",
+                            Id = "afde4ad493d2eb181cb87f12",
                             Title = "دوازدهم"
                         });
+                });
+
+            modelBuilder.Entity("School.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FactorId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("StatusId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TransactionNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TransactionStatus")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FactorId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("School.Models.Payment", b =>
@@ -616,6 +652,21 @@ namespace School.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("School.Models.Status", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Statuses");
                 });
 
             modelBuilder.Entity("School.Models.Student", b =>
@@ -800,8 +851,19 @@ namespace School.Migrations
                         .HasForeignKey("CostId");
 
                     b.HasOne("School.Models.Factor", "Factor")
+                        .WithMany("FactorItems")
+                        .HasForeignKey("FactorId");
+                });
+
+            modelBuilder.Entity("School.Models.Order", b =>
+                {
+                    b.HasOne("School.Models.Factor", "Factor")
                         .WithMany()
                         .HasForeignKey("FactorId");
+
+                    b.HasOne("School.Models.Status", "Status")
+                        .WithMany("Orders")
+                        .HasForeignKey("StatusId");
                 });
 
             modelBuilder.Entity("School.Models.Payment", b =>

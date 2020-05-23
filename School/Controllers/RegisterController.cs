@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -36,18 +37,21 @@ namespace School.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            if (HttpContext.Session.GetInt32("acceptedrole") == null)
+            {
+                return RedirectToAction("Roles", "Home");
+            }
+            
+
+            string SchoolName = _context.Settings.FirstOrDefault().SchoolName;
+            ViewBag.SchoolName = SchoolName;
             var select = await _context.Students.FirstOrDefaultAsync(s => s.IdUser == User.Id);
-
-            //if (select.IsPreSubmit)
-            //{
-
-            //}
 
             ViewBag.Level = new SelectList(await _context.Levels.ToListAsync(), "Id", "Title");
 
             ViewBag.educationType = new SelectList(await _context.EducationTypes.ToListAsync(), "Id", "Title");
 
-            return View();
+            return View(select);
         }
 
         [HttpPost]
@@ -63,21 +67,26 @@ namespace School.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                model.IdUser = user.Id;
-
-                _context.Students.Add(model);
-                await _context.SaveChangesAsync();
-
-
                 var Mobile = user.PhoneNumber;
+                string Code = Helper.GenerateShortenCode(Mobile, null).ToString();
+                model.IdUser = user.Id;
+                model.RegisterCode = int.Parse(Code);
+                if (model.Id != null)
+                {
+                    _context.Students.Update(model);
+                }
+                else
+                {
+                    _context.Students.Add(model);
 
-                var SchoolName = _context.Settings.FirstOrDefault().SchoolName;
+                    var SchoolName = _context.Settings.FirstOrDefault().SchoolName;
 
-                var link = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var fullName = model.FirstName + " " + model.LastName;
 
-                await _smsSender.SendSmsAsync(Mobile, SmsTypes.SchoolRegisterDone,
-                    Helper.GenerateShortenCode(Mobile, link).ToString(), SchoolName);
-
+                    await _smsSender.SendSmsAsync(Mobile, SmsTypes.SchoolRegisterDone,
+                        Code, SchoolName, fullName);
+                }
+                await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }
 

@@ -29,6 +29,8 @@ namespace School.Models
 
         [Display(Name = "پرداخت شده")]
         public bool IsPaid { get; set; }
+        public ICollection<FactorItem> FactorItems { get; set; }
+
 
     }
 }

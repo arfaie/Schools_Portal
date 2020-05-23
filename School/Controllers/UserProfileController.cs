@@ -37,9 +37,15 @@ namespace School.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+
             //Comment
             var select = await _context.Students.Where(x => x.IdUser == user.Id)/*.Include(x => x.City.State)*/.FirstOrDefaultAsync();
-
+            if (select == null)
+            {
+                return RedirectToAction("Index", "Register");
+            }
+            ViewBag.UserFullName = select.FirstName + " " + select.LastName;
+            ViewBag.UserMobile = user.PhoneNumber;
             //var cities = _context.Cities.Where(x => x.Id == select.CityId).FirstOrDefault();
             //select.id
 
