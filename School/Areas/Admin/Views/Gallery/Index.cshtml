@@ -62,7 +62,7 @@
                                     <tr>
                                         <td>@Count</td>
                                         <td>
-                                            <img src="@ViewBag.Path@item.Image"/>
+                                            <img src="@ViewBag.Path@item.Image" />
                                         </td>
 
 
@@ -73,14 +73,13 @@
                                                 ویرایش
                                             </a>
 
-                                          @if (Count > 4)
-                                          {
-                                              <a class="btn btn-danger" id="editagency" data-toggle="modal" asp-action="Delete"
-                                                 data-target="#modal-action" asp-route-id="@item.Id">
-                                                  <i class="glyphicon glyphicon-pencil"></i>
-                                                  حذف
-                                              </a>
-                                          }
+
+                                            <a class="btn btn-danger" id="editagency" data-toggle="modal" asp-action="Delete"
+                                               data-target="#modal-action" asp-route-id="@item.Id">
+                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                حذف
+                                            </a>
+
                                         </td>
                                     </tr>
                                 }

@@ -100,7 +100,15 @@
                                         }
                                         else
                                         {
-                                            <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" asp-controller="Account" asp-action="Logout">خروج</a></li>
+                                            <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" onclick="logOut">خروج</a></li>
+                                            <script>
+                                                function logOut () {
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: '@Url.Action("Logout","Account")'
+                                                        });
+                                                    };
+                                            </script>
                                         }
 
 
