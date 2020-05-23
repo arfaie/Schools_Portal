@@ -62,8 +62,8 @@
                                 var i = 1;
                                 foreach (var item in Model.OrderBy(x=>x.IsPreSubmit))
                                 {
-
-                                    <tr>
+                                    string color=null;
+                                    <tr @if (item.IsPreSubmit==false) { color = "orange"; }style="background-color:@color">
                                         <td>@(i++)</td>
                                         <td>@item.FirstName</td>
                                         <td>@item.LastName</td>
