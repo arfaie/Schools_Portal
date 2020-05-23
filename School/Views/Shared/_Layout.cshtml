@@ -100,18 +100,8 @@
                                         }
                                         else
                                         {
-                                            <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" onclick="logOut">خروج</a></li>
-                                            <script>
-                                                function logOut () {
-                                                        $.ajax({
-                                                            type: 'POST',
-                                                            url: '@Url.Action("Logout","Account")'
-                                                        });
-                                                    };
-                                            </script>
+                                            <li itemscope="itemscope" id="btnLogOut" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680" ><a href="#" id="btnLogOut" title="خروج">خروج</a></li>
                                         }
-
-
                                         <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="پروفایل" asp-controller="UserProfile" asp-action="Index">پروفایل</a></li>
                                     </ul>
                                 </div>
@@ -146,6 +136,8 @@
         </div>
         <!--/ End Copyright -->
     </footer>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -168,5 +160,7 @@
     <script type='text/javascript' src='~/wp-includes/js/wp-embed.min.js'></script>
 
     @RenderSection("Scripts", required: false)
+
+
 </body>
 </html>

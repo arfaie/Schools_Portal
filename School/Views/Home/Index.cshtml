@@ -4,71 +4,98 @@
 }
 
 
-<body class="rtl home page-template page-template-home-template page-template-home-template-php page page-id-42 wp-custom-logo">
-    <!-- Start Header -->
-    <!--/ End Header -->
-    <!-- Start Slider -->
+    <body class="rtl home page-template page-template-home-template page-template-home-template-php page page-id-42 wp-custom-logo">
+        <!-- Start Header -->
+        <!--/ End Header -->
+        <!-- Start Slider -->
 
-    <section id="j-slider">
-        <div class="slide-main">
-            <!-- Single Slider -->
-            @await Component.InvokeAsync("MainSlider")
-            <!--/ End Single Slider -->
+        <section id="j-slider">
+            <div class="slide-main">
+                <!-- Single Slider -->
+                @await Component.InvokeAsync("MainSlider")
+                <!--/ End Single Slider -->
+            </div>
+        </section>
+        <!--/ End Slider -->
+        <!-- Start Service -->
+        @await Component.InvokeAsync("MainService")
+        <!--/ End Service -->
+        <!-- Why Choose Us -->
+        <div id="why-choose" class="section">
+            <style>
+                .center-cropped {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                }
+            </style>
+
+
+
+            @* About Us *@
+
+            @await Component.InvokeAsync("MainAboutUs")
+
+            @* End About Us *@
+
+
         </div>
-    </section>
-    <!--/ End Slider -->
-    <!-- Start Service -->
-    @await Component.InvokeAsync("MainService")
-    <!--/ End Service -->
-    <!-- Why Choose Us -->
-    <div id="why-choose" class="section">
-        <style>
-            .center-cropped {
-                background-position: center center;
-                background-repeat: no-repeat;
-            }
-        </style>
-
-
-
-        @* About Us *@
-
-        @await Component.InvokeAsync("MainAboutUs")
-
-        @* End About Us *@
-
-
-    </div>
-    <!--/ End Why Choose Us -->
-    <!-- Start Team -->
-    <!--/ End Team -->
-    <!-- Start Testimonials -->
-    <!--/ End Testimonial -->
-    <!-- Start Portfolio -->
-    <section id="portfolio" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn">
-                    <div class="section-title center">
-                        <h2>گالری تصاویر</h2>
+        <!--/ End Why Choose Us -->
+        <!-- Start Team -->
+        <!--/ End Team -->
+        <!-- Start Testimonials -->
+        <!--/ End Testimonial -->
+        <!-- Start Portfolio -->
+        <section id="portfolio" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn">
+                        <div class="section-title center">
+                            <h2>گالری تصاویر</h2>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Gallery -->
+
+                @await Component.InvokeAsync("MainGallery")
+
+                <!--/ End Gallery -->
             </div>
+            @await Component.InvokeAsync("MainSettingDes")
+        </section>
 
-            <!-- Gallery -->
+        <!-- Contact Us -->
 
-            @await Component.InvokeAsync("MainGallery")
+        @await Component.InvokeAsync("MainContactUs")
 
-            <!--/ End Gallery -->
-        </div>
-        @await Component.InvokeAsync("MainSettingDes")
-    </section>
+        <!--/ End Contact Us -->
+        @*@section Scripts{
 
-    <!-- Contact Us -->
+            <script>
 
-    @await Component.InvokeAsync("MainContactUs")
+        $('#btnLogOut').on("click", function () {
 
-    <!--/ End Contact Us -->
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Logout","Account")',
 
-</body>
+                    success: function(msg) {
+                        if (msg.status === 'success') {
+                            //alert(msg.message);
+                            //$("#requestcount").text(msg.count);
+                        } else {
+                            //alert(msg.message);
+                        }
+                        $("#cartIcon").empty();
+                        if (msg.count > 0) {
+                            $("#cartIcon").html('<span id="itemCountBadge" class="badge badge-pill badge-danger">' + msg.count + '</span>');
+                        }
+                        var scriptOption = "<script> iziToast.show({message:'" + msg.message + "'" + ",theme: 'light', color: '2',icon: 'icon icon-check', iconColor: '#1ABC9C' ,messageColor: 'snow',backgroundColor: '#1ABC9C',maxWidth: 500,layout: 2,balloon: false,close: true,closeOnEscape: true,closeOnClick: true,displayMode: 0, position: 'topLeft',targetFirst: true,timeout: 5000,rtl: true,animateInside: true,drag: true,pauseOnHover: true,resetOnHover: false,progressBar: true,progressBarColor: '',progressBarEasing: 'linear',overlay: false,overlayClose: false,overlayColor: 'rgba(0, 0, 0, 0.6)',transitionIn: 'fadeInUp',transitionOut: 'fadeOut',transitionInMobile: 'fadeInUp',transitionOutMobile: 'fadeOutDown' }); <\/script>";
+                            $("#notificationDiv").append(scriptOption);
+                    }
+                });
+            })
+            </script>
+        }*@
+    </body>
 
