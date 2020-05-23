@@ -22,7 +22,6 @@
                         <th scope="col">عنوان شهریه</th>
                         <th scope="col">مقدار شهریه</th>
                         <th scope="col">عملیات</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -33,7 +32,7 @@
                             <tr class="center">
                                 <td>@(i++)</td>
                                 <td class="order-code">@item.Title</td>
-                                <td id="costValue">@item.Value</td>
+                                <td id="costValue">@item.Value.ToComma()</td>
                                 <td costId="@item.Id" class="btn btn-success" style="color:aliceblue"><a><span>انتخاب</span></a></td>
                                 <td style="display:none" id="@item.Id">@item.Id</td>
                             </tr>

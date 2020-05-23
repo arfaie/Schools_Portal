@@ -58,8 +58,16 @@ namespace School.Helpers
             {
                 return persianStr;
             }
-           
+
         }
+
+        public static string ToComma(this int number)
+        {
+            string old = number.ToString();
+            string newNumber = String.Format("{0:n0}", number);
+            return newNumber;
+        }
+
     }
 
 
