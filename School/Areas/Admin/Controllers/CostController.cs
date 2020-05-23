@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.EntityFrameworkCore;
 using School.Data;
 using School.Models;
@@ -25,7 +26,7 @@ namespace School.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Costs.Include(c => c.Year).ToListAsync());
+            return View(await _context.Costs.Include(c => c.Year).Include(c => c.Level).ToListAsync());
         }
 
         [HttpGet]
@@ -35,6 +36,8 @@ namespace School.Areas.Admin.Controllers
             var cost = await _context.Costs.FirstOrDefaultAsync(c => c.Id == id);
 
             ViewBag.Year = new SelectList(await _context.Years.ToListAsync(), "Id", "Title");
+
+            ViewBag.Level = new SelectList(await _context.Levels.ToListAsync(), "Id", "Title");
 
             if (cost != null)
             {
@@ -59,7 +62,7 @@ namespace School.Areas.Admin.Controllers
                     return PartialView("_SuccessfulResponse", redirectUrl);
                 }
 
-                 _context.Update(model);
+                _context.Update(model);
                 await _context.SaveChangesAsync();
 
                 TempData["Notification"] = Notification.ShowNotif(MessageType.Edit, ToastType.Blue);
