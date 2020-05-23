@@ -27,5 +27,11 @@ namespace School.Models
         [Display(Name = "توضیحات")]
         public string Des { get; set; }
 
+        [Display(Name = "مقطع")]
+        public string IdLevel { get; set; }
+
+        [ForeignKey("IdLevel")]
+        public virtual Level Level { get; set; }
+
     }
 }

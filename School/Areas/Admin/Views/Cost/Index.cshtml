@@ -50,6 +50,7 @@
                                 <th>@Html.DisplayNameFor(model => model.Title)</th>
                                 <th>@Html.DisplayNameFor(model => model.Value)</th>
                                 <th>@Html.DisplayNameFor(model => model.Year.Title)</th>
+                                <th>@Html.DisplayNameFor(model => model.Level.Title)</th>
                                 <th>عملیات</th>
                             </tr>
                         </thead>
@@ -64,6 +65,7 @@
                                         <td>@item.Title</td>
                                         <td>@item.Value</td>
                                         <td>@item?.Year?.Title</td>
+                                        <td>@item?.Level?.Title</td>
 
                                         <td>
                                             <a class="btn btn-info" id="editagency" data-toggle="modal" asp-action="AddEdit"
