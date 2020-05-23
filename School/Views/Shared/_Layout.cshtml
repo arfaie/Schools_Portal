@@ -1,4 +1,5 @@
-﻿
+﻿@inject SignInManager<ApplicationUser> SignInManager
+
 <!DOCTYPE html>
 <html class="no-js" dir="rtl" lang="fa-IR">
 <head>
@@ -93,7 +94,16 @@
                                         <li itemscope="itemscope" id="menu-item-682" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-682"><a title="نمونه‌ کارهای ما" href="#portfolio">گالری تصاویر</a></li>
                                         <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="تماس با ما" href="#contact">تماس با ما</a></li>
                                         <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ثبت نام" asp-controller="Home" asp-action="Roles">ثبت نام</a></li>
-                                        <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" asp-controller="Account" asp-action="Login">ورود</a></li>
+                                        @if (SignInManager.IsSignedIn(User))
+                                        {
+                                            <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" asp-controller="Account" asp-action="Login">ورود</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="ورود" asp-controller="Account" asp-action="Logout">خروج</a></li>
+                                        }
+
+
                                         <li itemscope="itemscope" id="menu-item-680" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-680"><a title="پروفایل" asp-controller="UserProfile" asp-action="Index">پروفایل</a></li>
                                     </ul>
                                 </div>

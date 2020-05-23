@@ -118,7 +118,7 @@
                 data.append('files', files[i])
 
             }
-            $('input,select').each(function (x, y) {
+            $('input').each(function (x, y) {
                 data.append($(y).attr('name'), $(y).val());
 
             });
