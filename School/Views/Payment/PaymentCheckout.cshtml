@@ -64,16 +64,16 @@
                     <ul class="checkout-summary-summary">
                         <li>
                             <span>مبلغ کل (@Model.FactorItems.Count آیتم)</span>
-                            <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
+                            <span>@($"{Model.FactorItems?.Sum(x => x.Price).ToComma():N0}") تومان</span>
                         </li>
                         <li>
                             <span>جمع</span>
-                            <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
+                            <span>@($"{Model.FactorItems?.Sum(x => x.Price).ToComma():N0}") تومان</span>
                         </li>
 
                         <li>
                             <span>مبلغ قابل پرداخت</span>
-                            <span id="finalPrice">@($"{Model.FactorItems?.Sum(x => x.Price) /*+ Model.ShippingCost:N0*/}") تومان</span>
+                            <span id="finalPrice">@($"{Model.FactorItems?.Sum(x => x.Price).ToComma() /*+ Model.ShippingCost:N0*/}") تومان</span>
                         </li>
 
                     </ul>
@@ -95,7 +95,7 @@
                 <div class="checkout-to-shipping-price-report">
                     <p>مبلغ قابل پرداخت</p>
                     <div class="cart-item-product-price">
-                        @($"{Model.FactorItems?.Sum(x => x.Price) /*+ Model.ShippingCost:N0*/}") تومان
+                        @($"{Model.FactorItems?.Sum(x => x.Price).ToComma() /*+ Model.ShippingCost:N0*/}") تومان
                     </div>
                 </div>
             </div>
