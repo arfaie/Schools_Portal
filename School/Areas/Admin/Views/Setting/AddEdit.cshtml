@@ -45,6 +45,14 @@
                 }
             </div>
 
+            <div class="form-group">
+                <label asp-for="MerchentCode" class="col-lg-2 col-sm-2 control-label"></label>
+                <div class="col-lg-6">
+                    <input asp-for="MerchentCode" class="form-control" />
+                    <span asp-validation-for="MerchentCode" class="text-danger"></span>
+                </div>
+            </div>
+
             <input type="hidden" asp-for="Id" class="form-control" />
 
             <input type="hidden" name="redirectUrl" value="@Url.Action("index","AboutUs")" />
