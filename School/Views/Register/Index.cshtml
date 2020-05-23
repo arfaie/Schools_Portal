@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = " ثبت نام مدرسه "+ ViewBag.SchoolName;
+    ViewData["Title"] = " ثبت نام مدرسه " + ViewBag.SchoolName;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,7 +17,62 @@
     <link rel="alternate" type="application/rss+xml" title="قالب وردپرس &raquo; مدرسه" href="index.rss?feed=rss2">
     <link rel="alternate" type="application/rss+xml" title="قالب وردپرس &raquo;  مدرسه" href="index-1.rss?feed=comments-rss2">
     <link href="~/wp-content/themes/business-portfolio/assets/css/registerStyle.css" rel="stylesheet" />
-    
+    <script src="~/js/Scripts/jquery-1.8.0.js"></script>
+    <script>
+        //$(function() {
+        //    alert('salam');
+        //});
+        $(document).on('click', '#submitdata', function (evt) {
+            evt.preventDefault();
+            var fileupload = $("#files").get(0);
+            var files = fileupload.files;
+            var data = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                data.append('files', files[i])
+
+            }
+
+
+            var fileupload2 = $("#files2").get(0);
+            var files2 = fileupload2.files;
+
+            for (var i = 0; i < files2.length; i++) {
+                data.append('files2', files2[i])
+
+            }
+
+
+            $('input,select').each(function (x, y) {
+                data.append($(y).attr('name'), $(y).val());
+
+            });
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("RegisterStudent", "Register")',
+                contentType: false,
+                processData: false,
+                data: data
+
+            }).done(function (res) {
+                if (res.status === "success") {
+                    window.location.href = '@Url.Action("Index", "Register")';
+                }
+                else {
+                    $.each(res.error, function (a, b) {
+                        alert(b);
+
+                    });
+
+                }
+            }).fail(function (xhr, b, error) {
+
+                alert(error)
+            });
+
+        });
+
+    </script>
+
     <style>
         #testimonial {
             background-image: url('');
@@ -187,12 +242,12 @@
                                 @*<div class="hr  col-md-12"></div>*@
                                 <!-----------hr------------->
                                 @*<div class="mt-2 col-md-12">
-            <label class="control-label">آیا ثبت نام اولی هستید؟</label>
-            <div class="mt-05">
-                <input name="firstRegister" type="radio"> بله
-                <input name="firstRegister" type="radio"> خیر
-            </div>
-        </div>*@
+                                        <label class="control-label">آیا ثبت نام اولی هستید؟</label>
+                                        <div class="mt-05">
+                                            <input name="firstRegister" type="radio"> بله
+                                            <input name="firstRegister" type="radio"> خیر
+                                        </div>
+                                    </div>*@
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
@@ -228,33 +283,33 @@
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
                                     <label asp-for="reportImage" class="control-label">عکس کارنامه سال قبل</label>
-                                   
-                                        <input required="required" type="file" id="files" name="files" multiple />
-                                    
+
+                                    <input required="required" type="file" id="files" name="files" multiple />
+
                                     @*@if (!String.IsNullOrWhiteSpace(Model.Id))
-                                    {
-                                        <input type="hidden" name="Imgename" value="@Model.reportImage" />
-                                    }*@
+                                        {
+                                            <input type="hidden" name="Imgename" value="@Model.reportImage" />
+                                        }*@
                                 </div>
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
                                 <div class="mt-2 col-md-12">
                                     <label asp-for="nationalCodeImage" class="control-label">عکس صفحه اول شناسنامه یا کارت ملی</label>
-                                    
-                                        <input required="required" type="file" id="files" name="files" multiple />
-                                    
+
+                                    <input required="required" type="file" id="files2" name="files2" multiple />
+
                                     @*@if (!String.IsNullOrWhiteSpace(Model.Id))
-                                    {
-                                        <input type="hidden" name="Imgename" value="@Model.nationalCodeImage" />
-                                    }*@
+                                        {
+                                            <input type="hidden" name="Imgename" value="@Model.nationalCodeImage" />
+                                        }*@
                                 </div>
                                 <!-----------hr------------->
                                 <div class="hr  col-md-12"></div>
                                 <!-----------hr------------->
 
-                                <div class="mt-6 col-md-12" >
-                                    <input type="submit" class="btn btn-success btn-block" value="ثبت نام">
+                                <div class="mt-6 col-md-12">
+                                    <input type="submit" id="submitdata" class="btn btn-success btn-block" value="ثبت نام">
                                 </div>
                             </div>
                         </div>
@@ -263,44 +318,11 @@
             </div>
         </div>
     </section>
-    
+
 </body>
 </html>
 
-<script>
-    $(document).on('click', '#submitdata', function (evt) {
-        evt.preventDefault();
-        var fileupload = $("#files").get(0);
-        var files = fileupload.files;
-        var data = new FormData();
-        for (var i = 0; i < files.length; i++) {
-            data.append('files', files[i]);
 
-        }
-        $('input,textarea').each(function (x, y) {
-            data.append($(y).attr('name'), $(y), val());
 
-        });
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("RegisterStudent", "Register")',
-            contentType: false,
-            processData: false,
-            data: data
 
-        }).done(function (res) {
-            if (res.status === "success") {
-                alert(res.message);
-            }
-            else {
-                alert("در ثبت اطلاعات مشکلی وجود دارد");
 
-            }
-        }).fail(function (xhr, b, error) {
-
-            alert(error);
-        });
-
-    });
-
-</script>
