@@ -14,40 +14,23 @@
                 </div>
                 <div class="profile-box-tabs">
                     <a asp-controller="UserProfile" asp-action="ChangePasswordProfile" class="profile-box-tab"><span class="mdi mdi-lock"></span>تغییر رمز</a>
-                    @*<form asp-controller="Account" asp-action="Logout" id="logoutForm" class="navbar-right">
-                            <button class="profile-box-tab-sign-out"><span class="mdi mdi-power"></span>خروج از حساب </button>
-                        </form>*@
-                    <form asp-controller="Account" asp-action="Logout" method="post">
-                        @*<button type="submit" class="profile-box-tab-sign-out"><span class="mdi mdi-power"></span>خروج از حساب</button>*@
-                        <a asp-controller="Account" asp-action="Logout" class="profile-box-tab-sign-out"><span class="mdi mdi-power"></span>خروج از حساب</a>
+
+                    <a href="#" id="LogOut" class="profile-box-tab-sign-out"><span class="mdi mdi-power"></span>خروج از حساب</a>
+
+                    <form style="display:none" asp-controller="Account" asp-action="Logout" id="logoutForm">
+                        <button id="btnLogout" type="submit" class="profile-box-tab-sign-out"><span class="mdi mdi-power"></span>خروج از حساب</button>
                     </form>
 
                 </div>
             </div>
         </div>
 
-        @*<a href="#" class="profile-box-row-arrow">
-                <div class="profile-box-title">کیف پول</div>
-                <div class="profile-box-price">
-                    <div class="wallet-amount">0</div>
-                    <div class="profile-box-currency">تومان</div>
-                    <i class="fa fa-angle-left"></i>
-                </div>
-                <p class="profile-box-wallet-link">افزایش موجودی</p>
-            </a>*@
-
-        @*<div class="box-sidebar">
-                <div class="profile-box">
-                    <img src="~/images/profile/1.jpg" class="profile-box-img-banner">
-                </div>
-            </div>*@
-
         <div class="box-sidebar">
             <span class="box-header-sidebar">حساب کاربری شما</span>
             <ul class="profile-menu-items">
 
                 <li><a asp-controller="UserProfile" asp-action="Index" class="profile-menu-url active-profile"><span class="mdi mdi-account-outline"></span>پروفایل</a></li>
-                <li><a asp-controller="UserProfile" asp-action="userOrders" class="profile-menu-url"><span class="fa fa-shopping-basket"></span>پیگیری ثبت نام</a></li>
+                <li><a asp-controller="UserProfile" asp-action="Registration" class="profile-menu-url"><span class="fa fa-shopping-basket"></span>پیگیری ثبت نام</a></li>
                 <li><a asp-controller="UserProfile" asp-action="userOrders" class="profile-menu-url"><span class="fa fa-shopping-basket"></span>پرداخت ها</a></li>
                 @*<li><a <a asp-controller="UserProfile" asp-action="ReturnedGoods" class="profile-menu-url"><span class="fa fa-file-text-o"></span>درخواست مرجوعی</a></li>*@
                 @*<li><a class="profile-menu-url"><span class="fa fa-star-o"></span>لیست علاقه مندی ها</a></li>*@

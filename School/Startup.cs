@@ -35,7 +35,7 @@ namespace School
             //services.AddControllersWithViews();
             //services.AddRazorPages();
 
-            //services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddRazorPages().AddRazorRuntimeCompilation();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -106,6 +106,7 @@ namespace School
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
             }
             else

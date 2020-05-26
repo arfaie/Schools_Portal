@@ -105,6 +105,9 @@ namespace School.Models
         [Display(Name = "عکس شناسنامه")]
         public string nationalCodeImage { get; set; }
 
+        [Display(Name = "تکمیل ثبت نام")]
+        public bool isDone { get; set; }
+
 
 
 

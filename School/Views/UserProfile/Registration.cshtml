@@ -1,0 +1,46 @@
+﻿@using School.Helpers;
+@model Student
+
+@{
+    ViewData["Title"] = "وضعیت ثبت نام";
+    Layout = "~/Views/Shared/_ProfileLayout.cshtml";
+}
+
+<div>
+    @(await Html.PartialAsync("_UserPanel"))
+</div>
+<div class="col-lg-9 col-md-8 col-xs-12 pull-left">
+    <div class="headline-profile page-profile-order" style="margin-top:140px;">
+        <span>وضعیت ثبت نام</span>
+    </div>
+    <div class="profile-stats page-profile-order">
+        <div class="table-orders" style="height: 200px;padding-top: 50px;">
+            @if (Model.Id == null)
+            {
+                <div>
+                    ثبت نام شما از طرف مدیریت در حال بررسی میباشد.پس از تایید ثبت نام، جهت تکمیل مراحل بعدی از
+                    طریق پیامک، اطلاع رسانی خواهد شد.
+                </div>
+            }
+            else if(!Model.isDone)//تایید پیش ثبت نام
+            {
+                <div>ثبت نام شما تایید شده است.جهت ادامه مراحل، تکمیل ثبت نام را انتخاب نمایید</div>
+                <br />
+                <a href="/UserProfile/Costs"><input class="btn btn-success" value="تکمیل ثبت نام" type="submit" /></a>
+            }
+            else if(Model.isDone)
+            {
+                <div>ثبت نام شما تکمیل شده است.لطفا جهت هماهنگی های لازم، با دفتر مدرسه تماس بگیرید.باتشکر</div>
+            }
+
+        </div>
+    </div>
+
+    <!--        responsive-profile-order------------------------->
+    <!--        responsive-profile-order------------------------->
+</div>
+@section Scripts{
+
+    
+}
+

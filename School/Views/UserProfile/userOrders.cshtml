@@ -1,8 +1,8 @@
 ﻿@using School.Helpers;
-@model IEnumerable<Payment>
+@model IEnumerable<Order>
 
 @{
-    ViewData["Title"] = "سفارشات کاربر";
+    ViewData["Title"] = "پرداخت ها";
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 </div>
 <div class="col-lg-9 col-md-8 col-xs-12 pull-left">
     <div class="headline-profile page-profile-order" style="margin-top:140px;">
-        <span>آخرین سفارش ها</span>
+        <span>آخرین پرداخت ها</span>
     </div>
     <div class="profile-stats page-profile-order">
         <div class="table-orders">
@@ -19,17 +19,15 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">شماره سفارش</th>
-                        <th scope="col">تاریخ ثبت سفارش</th>
+                        <th scope="col">شماره پرداخت</th>
+                        <th scope="col">تاریخ ثبت پرداخت</th>
                         <th scope="col">مبلغ قابل پرداخت</th>
                         <th scope="col">مبلغ کل</th>
                         <th scope="col">عملیات پرداخت</th>
-                        <th scope="col">وضعیت سفارش</th>
-                        <th scope="col">جزئیات</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @*@{
+                    @{
                         int i = 1;
                         foreach (var item in Model)
                         {
@@ -37,8 +35,8 @@
                                 <td>@(i++)</td>
                                 <td class="order-code">@item.Factor?.FactorCode</td>
                                 <td>@item.TransactionDate.ToPersianDateString()</td>
-                                <td>@(item.Factor?.FinalPrice - item.Factor?.TotalPrice)</td>
-                                <td>@item.Factor?.FinalPrice تومان</td>
+                                <td>@(item.Factor?.TotalPrice.ToComma()) تومان</td>
+                                <td>@item.Factor?.TotalPrice.ToComma() تومان</td>
                                 @if (item.TransactionStatus)
                                 {
                                     <td class="text-success">پرداخت موفق</td>
@@ -47,12 +45,10 @@
                                 {
                                     <td class="text-danger">پرداخت ناموفق</td>
                                 }
-                                <td>@item.Status?.Title</td>
-
-                                <td class="detail"><a asp-controller="UserProfile" asp-action="orderDetaile" asp-route-id="@item.Id"><i class="fa fa-angle-left"></i></a></td>
+                               
                             </tr>
                         }
-                    }*@
+                    }
 
                 </tbody>
             </table>

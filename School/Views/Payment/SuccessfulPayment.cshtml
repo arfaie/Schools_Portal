@@ -7,7 +7,7 @@
 <header class="shopping-page">
     <div class="container">
         <div class="header-shopping-logo">
-            <a asp-controller="Sahad" asp-action="Index" class="logo-account"><img src="~/img/logo/logo-top.png"></a>
+            <a asp-controller="Sahad" asp-action="Index" class="logo-account"><img src="~/images/Logo/Logo.png"></a>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
             <ul class="checkout-steps">
                 <li class="is-completed is-completed-active">
                     <a href="#" class="checkout-steps-item-link active-link-shopping">
-                        <span>اطلاعات ارسال</span>
+                        <span>اطلاعات پرداخت</span>
                     </a>
                 </li>
                 <li class="is-completed is-completed-active">
@@ -26,7 +26,7 @@
                 </li>
                 <li class="is-active">
                     <a href="#" class="checkout-steps-item-link active-link-shopping">
-                        <span>اتمام خرید و ارسال</span>
+                        <span>اتمام پرداخت</span>
                     </a>
                 </li>
             </ul>
@@ -46,13 +46,11 @@
                         <span class="fa fa-check"></span>
                     </div>
                     <div class="order-success">
-                        سفارش
+                        شهریه شما با کد پیگیری
                         <a href="#" class="order-code">@ViewBag.FactorCode</a>
                         با موفقیت پرداخت و در سیستم ثبت شد.
                         <span class="order-ready-post">
-                            پرداخت با موفقیت انجام شد. سفارش شما با موفقیت ثبت شد و در زمان تعیین شده برای شما ارسال خواهد شد.
-                            <br>
-                            از اینکه پوناس را برای خرید انتخاب کردید از شما سپاسگزاریم.
+                            از اینکه روش غیر حضوری را برای ثبت نام انتخاب کردید از شما سپاسگزاریم.
                         </span>
                     </div>
                 </div>
@@ -65,43 +63,64 @@
                         <span>@ViewBag.FactorCode</span>
                     </div>
                     <div class="checkout-process-order-info">
-                        سفارش شما با موفقیت در سیستم ثبت شد و هم اکنون
-                        <a href="#" class="processing">در حال پردازش</a>
+                        شهریه شما با موفقیت در سیستم ثبت شد و هم اکنون در وضعیت
+                        <a href="#" class="processing">پرداخت شده</a>
                         است.جزئیات این سفارش را می توانید
                         با کلیک بر روی دکمه
-                        <a asp-controller="UserProfile" asp-action="userOrders" class="link-border">پیگیری سفارش</a>
+                        <a asp-controller="UserProfile" asp-action="userOrders" class="link-border">پیگیری پرداخت ها</a>
                         مشاهده نمایید.
                     </div>
-                    <div class="parent-btn btn-following-order">
-                        <a asp-controller="UserProfile" asp-action="userOrders" class="dk-btn dk-btn-info">
-                            پیگیری سفارش
-                            <i class="fa fa-shopping-bag sign-in"></i>
-                        </a>
+
+                    
+                    <div class="parent-btn">
+                        <button id="btnOrder" type="submit" class="dk-btn dk-btn-info col-md-3">
+                            پیگیری پرداخت
+                            <i class="fa fa-print sign-in"></i>
+                        </button>
                     </div>
+                    <div class="parent-btn">
+                        <button id="btnPrint" type="submit" class="dk-btn dk-btn-success col-md-3">
+                            پرینت
+                            <i class="fa fa-print sign-in"></i>
+                        </button>
+                    </div>
+
                     @*<table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">نام تحویل گیرنده: حسن شجاعی</th>
-                                    <th scope="col">شماره تماس :</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>تعداد مرسوله : 1</td>
-                                    <td>مبلغ کل :</td>
-                                </tr>
-                                <tr>
-                                    <td>وضعیت پرداخت : پرداخت آنلاین(موفق)</td>
-                                    <td>وضعیت سفارش : در حال انجام</td>
-                                </tr>
-                                <tr>
-                                    <td>آدرس : استان خراسان شمالی ، بجنورد</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>*@
+            <thead>
+                <tr>
+                    <th scope="col">نام تحویل گیرنده: حسن شجاعی</th>
+                    <th scope="col">شماره تماس :</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>تعداد مرسوله : 1</td>
+                    <td>مبلغ کل :</td>
+                </tr>
+                <tr>
+                    <td>وضعیت پرداخت : پرداخت آنلاین(موفق)</td>
+                    <td>وضعیت سفارش : در حال انجام</td>
+                </tr>
+                <tr>
+                    <td>آدرس : استان خراسان شمالی ، بجنورد</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>*@
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section Scripts{
+
+    <script>
+        $('#btnPrint').on("click", function () {
+            window.print();
+        })
+
+        $('#btnOrder').on("click", function () {
+            location.href='/UserProfile/UserOrders';
+        })
+    </script>
+}

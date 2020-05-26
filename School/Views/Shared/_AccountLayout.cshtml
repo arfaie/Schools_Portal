@@ -23,13 +23,13 @@
         <footer class="footer-light">
             <div class="container">
                 <ul class="footer-light-link">
-                    <li><a asp-controller="Home" asp-action="About">درباره ما</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">تماس با ما</a></li>
+                    <li><a href="/Home/#why-choose">درباره ما</a></li>
+                    <li><a href="/Home/#contact">تماس با ما</a></li>
                 </ul>
                 
                 @await Component.InvokeAsync("Footer")
 
-                <p class="copy-right-footer-light">Copyright © @DateTime.UtcNow.Year punas.com</p>
+                <p class="copy-right-footer-light">Copyright © @DateTime.UtcNow.Year <a href="http:\\www.punas.ir">Punas</a></p>
             </div>
         </footer>
 

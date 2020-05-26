@@ -1,75 +1,75 @@
 ﻿@{
-    ViewData["Title"] = " به سایت مدرسه "+ ViewBag.SchoolName +" خوش آمدید ";
+    ViewData["Title"] = " به سایت مدرسه " + ViewBag.SchoolName + " خوش آمدید ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-    <body class="rtl home page-template page-template-home-template page-template-home-template-php page page-id-42 wp-custom-logo">
-        <!-- Start Header -->
-        <!--/ End Header -->
-        <!-- Start Slider -->
+<body class="rtl home page-template page-template-home-template page-template-home-template-php page page-id-42 wp-custom-logo">
+    <!-- Start Header -->
+    <!--/ End Header -->
+    <!-- Start Slider -->
 
-        <section id="j-slider">
-            <div class="slide-main">
-                <!-- Single Slider -->
-                @await Component.InvokeAsync("MainSlider")
-                <!--/ End Single Slider -->
-            </div>
-        </section>
-        <!--/ End Slider -->
-        <!-- Start Service -->
-        @await Component.InvokeAsync("MainService")
-        <!--/ End Service -->
-        <!-- Why Choose Us -->
-        <div id="why-choose" class="section">
-            <style>
-                .center-cropped {
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                }
-            </style>
-
-
-
-            @* About Us *@
-
-            @await Component.InvokeAsync("MainAboutUs")
-
-            @* End About Us *@
-
-
+    <section id="j-slider">
+        <div class="slide-main">
+            <!-- Single Slider -->
+            @await Component.InvokeAsync("MainSlider")
+            <!--/ End Single Slider -->
         </div>
-        <!--/ End Why Choose Us -->
-        <!-- Start Team -->
-        <!--/ End Team -->
-        <!-- Start Testimonials -->
-        <!--/ End Testimonial -->
-        <!-- Start Portfolio -->
-        <section id="portfolio" class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn">
-                        <div class="section-title center">
-                            <h2>گالری تصاویر</h2>
-                        </div>
+    </section>
+    <!--/ End Slider -->
+    <!-- Start Service -->
+    @await Component.InvokeAsync("MainService")
+    <!--/ End Service -->
+    <!-- Why Choose Us -->
+    <div id="why-choose" class="section">
+        <style>
+            .center-cropped {
+                background-position: center center;
+                background-repeat: no-repeat;
+            }
+        </style>
+
+
+
+        @* About Us *@
+
+        @await Component.InvokeAsync("MainAboutUs")
+
+        @* End About Us *@
+
+
+    </div>
+    <!--/ End Why Choose Us -->
+    <!-- Start Team -->
+    <!--/ End Team -->
+    <!-- Start Testimonials -->
+    <!--/ End Testimonial -->
+    <!-- Start Portfolio -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12 wow fadeIn">
+                    <div class="section-title center">
+                        <h2>گالری تصاویر</h2>
                     </div>
                 </div>
-
-                <!-- Gallery -->
-
-                @await Component.InvokeAsync("MainGallery")
-
-                <!--/ End Gallery -->
             </div>
-            @await Component.InvokeAsync("MainSettingDes")
-        </section>
 
-        <!-- Contact Us -->
+            <!-- Gallery -->
 
-        @await Component.InvokeAsync("MainContactUs")
+            @await Component.InvokeAsync("MainGallery")
 
-        <!--/ End Contact Us -->
-        @*@section Scripts{
+            <!--/ End Gallery -->
+        </div>
+        @await Component.InvokeAsync("MainSettingDes")
+    </section>
+
+    <!-- Contact Us -->
+
+    @await Component.InvokeAsync("MainContactUs")
+
+    <!--/ End Contact Us -->
+    @*@section Scripts{
 
             <script>
 
@@ -97,5 +97,7 @@
             })
             </script>
         }*@
-    </body>
-
+</body>
+@section Scripts{
+    
+}

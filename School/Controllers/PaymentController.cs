@@ -35,9 +35,15 @@ namespace School.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Cart()
         {
+
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var student = await _context.Students.Where(x => x.IdUser == user.Id).AsNoTracking().FirstOrDefaultAsync();
-            if (!(student.FatherName == "" || student.LastName == null))
+            int count = 0;
+            if (HttpContext.Session.GetComplexData<List<string>>("CartItems") != null)
+            {
+                count = HttpContext.Session.GetComplexData<List<string>>("CartItems").Count;
+            }
+            if (count != 0)
             {
                 if (user == null)
                 {
@@ -86,7 +92,7 @@ namespace School.Controllers
                                     FactorId = factor.Id,
                                     CostId = product.Id,
                                     Cost = product,
-                                    Price=product.Value
+                                    Price = product.Value
                                     //UnitCount = 1,
                                     //UnitPrice = product.Price,
                                     //Discount = product.Price - product.PriceWithDiscount
@@ -126,9 +132,9 @@ namespace School.Controllers
             }
             else
             {
-                HttpContext.Session.SetString("EditProfile", "NotComplete");
-                ViewData["Profile"] = "جهت ادامه پروفایل کاربری خود را تکمیل نمایید";
-                return RedirectToAction("EditProfile", "UserProfile");
+                HttpContext.Session.SetString("selectCost", "NotComplete");
+                TempData["selectCost"] = "جهت ادامه ثبت نام، شهریه را انتخاب فرمایید";
+                return RedirectToAction("Costs", "UserProfile");
             }
 
 
@@ -137,6 +143,16 @@ namespace School.Controllers
         [HttpGet]
         public async Task<IActionResult> PaymentCheckout(string id)
         {
+            int count = 0;
+            if (HttpContext.Session.GetComplexData<List<string>>("CartItems") != null)
+            {
+                count = HttpContext.Session.GetComplexData<List<string>>("CartItems").Count;
+            }
+            if (count == 0)
+            {
+                TempData["selectCost"] = "جهت ادامه ثبت نام، شهریه را انتخاب فرمایید";
+                return RedirectToAction("Costs", "UserProfile");
+            }
             var factor = await _context.Factors.Include(x => x.FactorItems).FirstOrDefaultAsync(x => x.Id == id);
 
             if (factor == null)
@@ -178,7 +194,7 @@ namespace School.Controllers
 
             //var cities = await _context.Cities.OrderBy(x => x.Name).ToListAsync();
 
-            
+
 
             return View(factor);
         }
@@ -214,7 +230,7 @@ namespace School.Controllers
                     ViewBag.Costs = await _context.Costs.Where(x => CostIds.Contains(x.Id)).ToListAsync();
                 }
 
-                
+
                 _context.Factors.Update(factor);
                 await _context.SaveChangesAsync();
             }
@@ -247,12 +263,14 @@ namespace School.Controllers
             _context.Factors.Update(factor);
             await _context.SaveChangesAsync();
 
-            var callbackUrl = $"http://{Request.Host}/Payment/{nameof(PaymentVerify)}/{factor.Id}";
-            var description = "پرداخت در سایت پوناس";
+            var schoolNmae = _context.Settings.FirstOrDefault().SchoolName;
+            var callbackUrl = $"https://{Request.Host}/Payment/{nameof(PaymentVerify)}/{factor.Id}";
+            var description = "پرداخت شهریه مدرسه " + schoolNmae;
 
             try
             {
-                var response = ZarinPalPayment.Request(factor.TotalPrice, description, callbackUrl);
+                string M_Code = _context.Settings.FirstOrDefault().MerchentCode;
+                var response = ZarinPalPayment.Request(M_Code, factor.TotalPrice, description, callbackUrl);
 
                 // if there is an error show this page again
                 if (response.Status == 100)
@@ -333,7 +351,9 @@ namespace School.Controllers
                 return RedirectToAction(nameof(FailedPayment), new { factorCode = factor.FactorCode, error = "خطا در مبلغ درست پرداختی" });
             }
 
-            var verificationResponse = ZarinPalPayment.Verify(factor.TotalPrice, authority);
+            string M_Code = _context.Settings.FirstOrDefault().MerchentCode;
+
+            var verificationResponse = ZarinPalPayment.Verify(M_Code, factor.TotalPrice, authority);
 
             if (!verificationResponse.IsSuccess)
             {
@@ -435,9 +455,16 @@ namespace School.Controllers
                     return RedirectToAction(nameof(FailedPayment), new { factorCode = factor.FactorCode, error = ex.Message });
                 }
             }
-            var manager = user.Students.Where(x => x.IdUser == user.Id).FirstOrDefault().LastName;
+            var schoolName = _context.Settings.FirstOrDefault().SchoolName;
+            var student = _context.Students.Where(x=>x.IdUser==user.Id).FirstOrDefault();
+            string studentName = student.FirstName + " " + student.LastName;
 
-            await _smsSender.SendSmsAsync(user.UserName, SmsTypes.SchoolPaymentDone, factor.FactorCode, (!String.IsNullOrWhiteSpace(manager) ? manager : "فرهیخته"));
+            student.isDone = true;
+            _context.Update(student);
+            await _context.SaveChangesAsync();
+
+
+            await _smsSender.SendSmsAsync(user.UserName, SmsTypes.SchoolPaymentDone, factor.FactorCode,schoolName , studentName);
 
             return RedirectToAction(nameof(SuccessfulPayment), new { factorCode = factor.FactorCode });
         }
@@ -473,11 +500,7 @@ namespace School.Controllers
             return Json(new { cost = 0 });
         }
 
-        public async Task<IActionResult> Costs()
-        {
-            var costs = await _context.Costs.ToListAsync();
-            return View(costs);
-        }
+
 
         /*Product*/
 

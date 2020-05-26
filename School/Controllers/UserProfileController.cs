@@ -281,7 +281,7 @@ namespace School.Controllers
             }
             
 
-            return View(await _context.Payments.Where(o => o.Factor.IdUser == user.Id).Include(o => o.Factor).OrderByDescending(x => x.TransactionDate).ToListAsync());
+            return View(await _context.Orders.Where(o => o.Factor.IdUser == user.Id).Include(o => o.Factor).OrderByDescending(x => x.TransactionDate).ToListAsync());
         }
 
         [HttpGet]
@@ -488,6 +488,21 @@ namespace School.Controllers
             //}
 
             return Json(new { status = "fail", message = Notification.ShowNotif("امکان درخواست مرجوعی برای این سفارش وجود ندارد.", ToastType.Red) });
+        }
+        public async Task<IActionResult> Costs()
+        {
+            var costs = await _context.Costs.ToListAsync();
+            return View(costs);
+        }
+        public async Task<IActionResult> Registration()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var student = await _context.Students.Where(x=>x.IdUser==user.Id).FirstOrDefaultAsync();
+            if (student.IsPreSubmit == true)
+            {
+                return View(student);
+            }
+            return View(new Student());
         }
 
         //[HttpPost]

@@ -24,13 +24,13 @@
                         <input asp-for="IsTermsAccepted" type="checkbox" value="1" name="login" id="remember" checked="">
                         <span class="ui-checkbox-check"></span>
                     </label>
-                    <label for="remember" class="remember-me"><a asp-controller="Home" asp-action="Privacy" target="_blank"><br />حریم خصوصی</a> و <a asp-controller="Home" asp-action="Terms" target="_blank">شرایط قوانین</a>استفاده از سرویس های سایت کاربیوتیک را مطالعه نموده و با کلیه موارد آن موافقم.</label>
+                    <label for="remember" class="remember-me"><br /><a asp-controller="Home" asp-action="Roles" target="_blank">شرایط قوانین</a>استفاده از سرویس های سایت کاربیوتیک را مطالعه نموده و با کلیه موارد آن موافقم.</label>
                 </div>
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <span asp-validation-for="IsTermsAccepted" class="text-danger"></span>
                 <div class="parent-btn">
                     <button type="submit" class="dk-btn dk-btn-info">
-                        ثبت نام به کاربیوتیک
+                        ثبت نام 
                         <i class="mdi mdi-account-plus-outline sign-in"></i>
                     </button>
                 </div>

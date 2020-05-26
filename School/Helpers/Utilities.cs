@@ -13,8 +13,6 @@ namespace School.Helpers
 			var random = rnd.Next(start, end);
 			return random;
 		}
-
-
         
 
     }

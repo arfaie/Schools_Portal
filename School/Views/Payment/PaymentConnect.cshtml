@@ -9,7 +9,7 @@
 <header class="shopping-page">
     <div class="container">
         <div class="header-shopping-logo">
-            <a asp-controller="Home" asp-action="Index" class="logo-account"><img src="~/images/logo.png"></a>
+            <a asp-controller="Home" asp-action="Index" class="logo-account"><img src="~/images/logo/logo.png"></a>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
             <ul class="checkout-steps">
                 <li class="is-completed is-completed-active">
                     <a href="#" class="checkout-steps-item-link active-link-shopping">
-                        <span>اطلاعات ارسال</span>
+                        <span>اطلاعات پرداخت</span>
                     </a>
                 </li>
                 <li class="is-completed">
@@ -28,7 +28,7 @@
                 </li>
                 <li class="is-active">
                     <a href="#" class="checkout-steps-item active-link">
-                        <span>اتمام خرید و ارسال</span>
+                        <span>اتمام پرداخت</span>
                     </a>
                 </li>
             </ul>
@@ -78,26 +78,26 @@
                                     <span class="ui-radio-check"></span>
                                 </label>
                                 <h4 class="checkout-paymethod-title">
-                                    <p class="checkout-paymethod-title-label">پرداخت اینترنتی هوشمند پوناس</p>
+                                    <p class="checkout-paymethod-title-label">پرداخت اینترنتی هوشمند </p>
                                     <span class="paymethod-wallet-amount">آنلاین با تمامی کارت‌های بانکی</span>
                                 </h4>
-                                <div id="zarinpal" class="checkout-paymethod-by-digipay">
+                                @*<div id="zarinpal" class="checkout-paymethod-by-digipay">
                                     <img src="~/images/zarinpal.png" width="60" height="85" />
-                                </div>
+                                </div>*@
                             </div>
                         </li>
                     </ul>
                 </div>
                 <div class="headline-checkout-shopping">
-                    <span>خلاصه سفارش</span>
+                    <span>خلاصه پرداخت</span>
                 </div>
                 <div class="checkout-order-summary">
                     <div class="checkout-order-summary-item">
                         <header class="checkout-order-summary-header">
                             <div class="checkout-order-summary-row">
                                 <div class="checkout-order-summary-col-post-time">
-                                    مرسوله 1 از 1
-                                    <span>(@Model.FactorItems?.Sum(x => x.Price) قلم کالا)</span>
+                                    @*مرسوله 1 از 1*@
+                                    <span>(@Model.FactorItems?.Sum(x => x.Price).ToComma() تومان  )</span>
                                 </div>
                                 @*<div class="checkout-order-summary-col-post-time">
                                     زمان ارسال
@@ -137,7 +137,7 @@
                         <div class="checkout-to-shipping-price-report">
                             <p>مبلغ قابل پرداخت</p>
                             <div class="cart-item-product-price">
-                                @($"{Model.FactorItems?.Sum(x => x.Price)  /*+Model.ShippingCost:N0*/}")
+                                @($"{Model.FactorItems?.Sum(x => x.Price).ToComma()  /*+Model.ShippingCost:N0*/}")
                                 <span>تومان</span>
                             </div>
                         </div>
@@ -195,12 +195,12 @@
                 <div class="checkout-summary">
                     <ul class="checkout-summary-summary">
                         <li>
-                            <span>مبلغ کل قلم کالا)</span>
+                            <span>مبلغ کل </span>
                             <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
                         </li>
                         <li>
                             <span>جمع</span>
-                            <span>@($"{Model.FactorItems?.Sum(x => x.Price):N0}") تومان</span>
+                            <span>@($"{Model.FactorItems?.Sum(x => x.Price).ToComma():N0}") تومان</span>
                         </li>
                         @*<li>
                             <span style="color: #424750; font-size:14px;"><i class="fa fa-truck"></i>هزینه ارسال</span>
